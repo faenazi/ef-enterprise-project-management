@@ -1,96 +1,234 @@
-# Requirements Traceability Matrix
+# مصفوفة التتبع الشاملة للمتطلبات
 
-## Purpose
+## الغرض
 
-Maintain end-to-end traceability from business objectives through requirements, delivery, design, testing, and release without duplicating the source documents.
+توفر هذه الوثيقة مرجعًا مركزيًا للتتبع من أهداف مشروع منصة إدارة المشاريع المؤسسية لصندوق البيئة إلى متطلبات الأعمال، والمتطلبات الوظيفية وغير الوظيفية، وعناصر سجل الأعمال، ومعايير القبول، ثم إلى التصميم والاختبارات والإصدارات عند إنشائها.
 
-## Document Information
+لا تكرر هذه المصفوفة نصوص المتطلبات من مصادرها الرسمية، ولا تعتبر وجود رابط بين المعرفات دليلًا على مراجعة المتطلب أو اعتماده أو تنفيذه أو اختباره. الغرض منها هو كشف التغطية والفجوات والعناصر اليتيمة والمحافظة على اتساق الوثائق طوال دورة حياة المشروع.
 
-| Field | Value |
+## معلومات الوثيقة
+
+| الحقل | القيمة |
 |---|---|
-| Project | {{PROJECT_NAME}} |
-| Document Owner | {{DOCUMENT_OWNER}} |
-| Prepared By | {{PREPARED_BY}} |
-| Reviewed By | {{REVIEWED_BY}} |
-| Version | 0.1 |
-| Status | Draft |
-| Classification | Internal |
-| Last Updated | {{LAST_UPDATED}} |
+| المشروع | منصة إدارة المشاريع المؤسسية لصندوق البيئة |
+| الاسم الإنجليزي | Environment Fund Enterprise Project Management Platform |
+| نوع الوثيقة | Requirements Traceability Matrix — RTM |
+| مالك الوثيقة | TBD — يحدد من صندوق البيئة |
+| أُعدت بواسطة | تحليل أعمال وأنظمة بمساعدة الذكاء الاصطناعي وتحت توجيه المستخدم |
+| المراجعون | TBD — مالك الأعمال وPMO وIT والمالية والمشتريات والعقود والأمن والبيانات والجودة والتشغيل |
+| الإصدار | 0.2 |
+| الحالة | Draft |
+| التصنيف | Internal |
+| آخر تحديث | 2026-07-18 |
 
-## Required Context
+## السياق المطلوب
 
 1. `docs/01-Requirements/01-Project-Overview.md`
 2. `docs/01-Requirements/02-Business-Requirements.md`
 3. `docs/01-Requirements/03-System-Requirements.md`
 4. `docs/01-Requirements/04-Delivery-Backlog.md`
-5. Relevant solution-design and QA documents
+5. ملفات تصميم الحل وUI/UX والجودة والإصدارات عند إنشائها
 
-## AI Instructions
+## قواعد إدارة التتبع
 
-- Reference existing IDs exactly; never create an ID solely to make the matrix appear complete.
-- Use one row per traceable relationship when a requirement maps to multiple items.
-- Mark missing coverage as a gap rather than guessing.
-- Update this matrix when requirements, backlog items, designs, tests, or releases change.
+- يُعرّف كل معرف مرة واحدة في مصدره الرسمي، ويُعاد استخدامه كما هو دون إعادة ترقيم أو تغيير المعنى.
+- لا يُنشأ معرف تصميم أو اختبار أو إصدار لمجرد إظهار اكتمال المصفوفة.
+- تسجل التغطية المفقودة كفجوة صريحة بدل التخمين.
+- تمثل النطاقات في هذا الإصدار تغطية على مستوى مجموعة القدرة، ولا تغني عن الربط التفصيلي بين كل `FR` وكل عنصر تسليم قبل اعتبار العنصر `Ready`.
+- لا تعني حالة `Partial` أن المتطلب ناقص من حيث النص فقط؛ قد تعني أن التصميم أو الاختبار أو الإصدار لم يُنشأ بعد.
+- يجب تحديث المصفوفة عند إضافة متطلب أو تعديله أو إلغائه أو تقسيم عنصر Backlog أو إنشاء تصميم أو اختبار أو إصدار.
+- لا يجوز حذف علاقة تاريخية؛ عند إلغاء عنصر يحفظ المعرف وتغيّر حالته مع توضيح البديل أو سبب الإلغاء.
+- يجب التحقق دوريًا من عدم وجود أهداف أو متطلبات أو عناصر Backlog أو اختبارات يتيمة.
 
-## Traceability Model
+## 1. نموذج التتبع
 
 ```text
-Objective → Business Requirement / Rule → FR / NFR → Backlog Item → Design → Test → Release
+Objective
+→ Business Requirement / Candidate Business Rule
+→ Functional Requirement / Non-Functional Requirement
+→ Backlog Epic / Delivery Item
+→ Acceptance Criterion
+→ Solution / Data / Security / UX Design
+→ Test Scenario / Test Case / UAT
+→ Release / Sprint / Evidence
 ```
 
-## Identifier Standard
+## 2. معايير المعرفات
 
-An ID is defined once in its authoritative source and reused unchanged when referenced elsewhere. Do not assign the same ID to different concepts. Document-local items use a distinct prefix so links remain unambiguous across the repository.
-
-| Item | Prefix | Example |
+| العنصر | البادئة | المصدر الرسمي الحالي |
 |---|---|---|
-| Objective | OBJ | OBJ-001 |
-| Business Requirement | BR | BR-001 |
-| Business Rule | RULE | RULE-001 |
-| Functional Requirement | FR | FR-001 |
-| Non-Functional Requirement | NFR | NFR-001 |
-| Backlog Item | BI | BI-001 |
-| Acceptance Criterion | AC | AC-001 |
-| Test Scenario | TS | TS-001 |
-| Test Case | TC | TC-001 |
-| Project Assumption / Constraint / Dependency | PACD | PACD-001 |
-| Business Assumption / Constraint / Dependency | BACD | BACD-001 |
-| Architecture Decision | ADR | ADR-001 |
-| Architecture Component | ARCMP | ARCMP-001 |
-| UI Component | UICMP | UICMP-001 |
-| Release | REL | REL-001 |
-| Delivery Risk | DRISK | DRISK-001 |
-| Defect | DEF | DEF-001 |
-| Project Open Question | POQ | POQ-001 |
-| Business Open Question | BOQ | BOQ-001 |
-| System Open Question | SOQ | SOQ-001 |
-| Technology Open Question | TOQ | TOQ-001 |
-| Application Architecture Question | AAQ | AAQ-001 |
-| Data and Integration Question | DIQ | DIQ-001 |
-| UX Foundation Question | UXFQ | UXFQ-001 |
-| Information Architecture and Flow Question | IAFQ | IAFQ-001 |
-| Wireframe and Interaction Question | WIQ | WIQ-001 |
-| Design System Question | DSQ | DSQ-001 |
-| QA Strategy Question | QASQ | QASQ-001 |
-| Test Case Question | TCQ | TCQ-001 |
-| UAT Question | UATQ | UATQ-001 |
-| QA Residual Risk | QARR | QARR-001 |
-| Release Residual Risk | RELR | RELR-001 |
+| الهدف | `OBJ` | Project Overview |
+| متطلب الأعمال | `BR` | Business Requirements |
+| قاعدة أعمال مرشحة | `CBR` | Business Requirements |
+| المتطلب الوظيفي | `FR` | System Requirements |
+| المتطلب غير الوظيفي | `NFR` | System Requirements |
+| ضابط التحقق | `VAL` | System Requirements |
+| الحالة الاستثنائية | `SE` | System Requirements |
+| عنصر البيانات | `DATA` | System Requirements |
+| التقرير أو اللوحة | `DR` | Business Requirements / SRS |
+| التكامل | `INT` | System Requirements |
+| متطلب التدقيق | `AUD` | System Requirements |
+| عنصر سجل الأعمال | `BI` | Delivery Backlog |
+| ملف قبول مشترك | `ACP` | Delivery Backlog |
+| معيار قبول | `AC` | Delivery Backlog |
+| قرار معماري | `ADR` | Solution Design — لم يبدأ |
+| مكوّن معماري | `ARCMP` | Solution Design — لم يبدأ |
+| سيناريو اختبار | `TS` | QA — لم يبدأ |
+| حالة اختبار | `TC` | QA — لم يبدأ |
+| الإصدار | `REL` | Product Roadmap — لم يبدأ |
+| السبرنت | `SPR` | Sprint Plan — لم يبدأ |
+| فجوة تتبع | `TG` | هذه الوثيقة |
 
-## Traceability Matrix
+## 3. حالات التغطية
 
-| Objective | BR / Rule | FR / NFR | Backlog Item | Design Reference | Test Scenario / Case | Release / Sprint | Coverage Status | Notes |
-|---|---|---|---|---|---|---|---|---|
-| OBJ-001 | BR-001 | FR-001 | BI-001 | {{DESIGN_REFERENCE}} | TC-001 | {{TARGET}} | Partial | {{NOTES}} |
+| الحالة | التعريف |
+|---|---|
+| Covered | جميع الروابط المطلوبة للمرحلة الحالية موجودة ومراجعة ولا توجد فجوة مانعة معروفة. |
+| Partial | توجد روابط أساسية، لكن توجد روابط لاحقة أو تفاصيل أو مراجعات لم تكتمل. |
+| Gap | لا توجد تغطية مطلوبة أو توجد علاقة غير محسومة تمنع الجاهزية. |
+| N/A | الرابط غير منطبق مع سبب موثق ومعتمد. |
 
-## Traceability Gaps
+## 4. لوحة تغطية خط الأساس
 
-| Gap ID | Missing Coverage | Impact | Required Action | Owner | Status |
-|---|---|---|---|---|---|
-| TG-001 | {{MISSING_COVERAGE}} | {{IMPACT}} | {{ACTION}} | {{OWNER}} | Open |
+| طبقة التتبع | النطاق الحالي | التغطية المسجلة | حالة التغطية | الملاحظة |
+|---|---:|---:|---|---|
+| الأهداف | `OBJ-001` إلى `OBJ-012` | 12 من 12 | Partial | رُبطت بمجموعات القدرات تحليليًا وتحتاج مراجعة ملاك الأهداف. |
+| متطلبات الأعمال | `BR-001` إلى `BR-132` | 132 من 132 | Partial | جميعها مغطاة ضمن نطاقات القدرات، لكنها ما زالت Draft. |
+| قواعد الأعمال المرشحة | `CBR-001` إلى `CBR-020` | 20 من 20 كمرشحات | Gap | لم تعتمد كقواعد أعمال رسمية ولم تربط تفصيليًا بكل FR وBI. |
+| المتطلبات الوظيفية | `FR-001` إلى `FR-332` | 332 من 332 | Partial | جميعها مغطاة ضمن 24 مجموعة قدرة؛ الربط التفصيلي بعناصر التسليم مطلوب. |
+| المتطلبات غير الوظيفية | `NFR-001` إلى `NFR-056` | 56 من 56 | Partial | جُمعت في تسع حزم تتبع؛ معظم المقاييس والقيم المستهدفة ما زالت TBD. |
+| عناصر سجل الأعمال | `BI-001` إلى `BI-214` | 214 من 214 | Partial | جميع العناصر ضمن مجموعات القدرات، وجميعها Not Ready وNot Started. |
+| ملفات القبول المشتركة | `ACP-001` إلى `ACP-012` | 12 من 12 | Partial | ملفات قبول نمطية ولا تستبدل معايير القبول التفصيلية لكل عنصر. |
+| معايير القبول الأولية | `AC-001` إلى `AC-024` | 24 من 24 Epic | Partial | تغطي الـEpics فقط؛ لا توجد معايير تفصيلية لكل عنصر من عناصر التسليم. |
+| مراجع التصميم | لا يوجد | 0 | Gap | ملفات المعمارية والبيانات والأمن وUI/UX لم تبدأ. |
+| سيناريوهات وحالات الاختبار | لا يوجد | 0 | Gap | ملفات QA لم تبدأ ولا توجد أدلة تنفيذ. |
+| الإصدارات والسبرنتات | لا يوجد | 0 | Gap | لم تعتمد خارطة المنتج أو خطة إصدار أو Sprint. |
 
-## Revision History
+## 5. تتبع الأهداف إلى مجموعات القدرات
 
-| Version | Date | Author | Change Summary |
+العلاقات التالية خط أساس تحليلي تحتاج إلى تأكيد أصحاب المصلحة، ولا تمثل اعتمادًا للأهداف أو مقاييس نجاحها.
+
+| الهدف | مجموعات القدرات المرتبطة | مبرر العلاقة | الحالة |
 |---|---|---|---|
-| 0.1 | {{DATE}} | {{AUTHOR}} | Initial draft |
+| OBJ-001 | BI-001، BI-025، BI-034، BI-041، BI-144، BI-153، BI-190 | إنشاء مصدر مؤسسي موحد للمحافظ والبرامج والمشاريع والوثائق والبيانات والتقارير. | Partial |
+| OBJ-002 | BI-008، BI-016، BI-041، BI-050، BI-108، BI-127، BI-135، BI-172 | توحيد دورة الحياة والحوكمة والاعتمادات وضبط التغيير والقبول والإغلاق. | Partial |
+| OBJ-003 | BI-001، BI-008، BI-016، BI-025، BI-034، BI-164 | ربط الاستراتيجية والطلب والأولوية والاستثمارات والمنافع. | Partial |
+| OBJ-004 | BI-050، BI-058، BI-067، BI-077، BI-087، BI-097، BI-108، BI-117، BI-127 | تحسين التخطيط والتحكم المتكامل في النطاق والوقت والموارد والتكلفة والعقود والجودة والمخاطر. | Partial |
+| OBJ-005 | BI-087، BI-097، BI-144، BI-180، BI-190 | التكامل مع الأنظمة المؤسسية وحماية حدود مصادر الحقيقة. | Partial |
+| OBJ-006 | BI-025، BI-034، BI-058، BI-077، BI-087، BI-097، BI-117، BI-153، BI-164، BI-209 | توفير تقارير وتحليلات تنفيذية وتشغيلية وقيمة قابلة للتفسير. | Partial |
+| OBJ-007 | BI-041، BI-050، BI-087، BI-097، BI-108، BI-117، BI-127، BI-135، BI-144، BI-172، BI-180، BI-190 | تعزيز التدقيق والأمن وفصل المهام والاحتفاظ بالأدلة والسجلات. | Partial |
+| OBJ-008 | BI-067، BI-077، BI-135، BI-153، BI-201، BI-209 | تحسين التعاون والاجتماعات والإجراءات والتنبيهات وتجربة الاستخدام. | Partial |
+| OBJ-009 | BI-001، BI-025، BI-034، BI-164، BI-172 | قياس النتائج والمنافع والقيمة بعد التسليم وربطها بالاستراتيجية. | Partial |
+| OBJ-010 | BI-135، BI-144، BI-172، BI-209 | حفظ المعرفة والدروس والقرارات وإعادة استخدامها. | Partial |
+| OBJ-011 | BI-067، BI-180، BI-201، BI-209 | تقديم تجربة ثنائية اللغة وقابلة للوصول وآمنة ومناسبة للدور. | Partial |
+| OBJ-012 | BI-001 إلى BI-214 | المحافظة على نطاق مستهدف كامل مع تنفيذ تدريجي محكوم وقابل للتتبع. | Partial |
+
+## 6. المصفوفة الرئيسية لتتبع القدرات الوظيفية
+
+| مجموعة القدرة | الأهداف | متطلبات الأعمال | المتطلبات الوظيفية | عناصر Backlog | معيار القبول الأولي | التصميم | الاختبار | الإصدار / السبرنت | التغطية |
+|---|---|---|---|---|---|---|---|---|---|
+| الاستراتيجية والمواءمة | OBJ-001، OBJ-003، OBJ-006، OBJ-009، OBJ-012 | BR-001–BR-004 | FR-001–FR-010 | BI-001–BI-007 | AC-001؛ ACP-001/002/004/008 | Pending | Pending | TBD | Partial |
+| الطلبات والأفكار والفرص | OBJ-001، OBJ-002، OBJ-003، OBJ-008، OBJ-012 | BR-005–BR-008 | FR-011–FR-022 | BI-008–BI-015 | AC-002؛ ACP-001/002/006 | Pending | Pending | TBD | Partial |
+| دراسة الجدوى والتقييم والأولوية | OBJ-002، OBJ-003، OBJ-006، OBJ-007، OBJ-012 | BR-009–BR-014 | FR-023–FR-036 | BI-016–BI-024 | AC-003؛ ACP-003/004/006 | Pending | Pending | TBD | Partial |
+| إدارة المحافظ | OBJ-001، OBJ-003، OBJ-004، OBJ-006، OBJ-009 | BR-015–BR-020 | FR-037–FR-048 | BI-025–BI-033 | AC-004؛ ACP-002/003/004/008 | Pending | Pending | TBD | Partial |
+| إدارة البرامج | OBJ-001، OBJ-003، OBJ-004، OBJ-006، OBJ-009 | BR-021–BR-024 | FR-049–FR-058 | BI-034–BI-040 | AC-005؛ ACP-001/003/004 | Pending | Pending | TBD | Partial |
+| تأسيس المشاريع وتصنيفها وحوكمتها | OBJ-001، OBJ-002، OBJ-007، OBJ-012 | BR-025–BR-030 | FR-059–FR-074 | BI-041–BI-049 | AC-006؛ ACP-002/003/006/010 | Pending | Pending | TBD | Partial |
+| النطاق والمتطلبات والمخرجات وWBS | OBJ-002، OBJ-004، OBJ-007، OBJ-012 | BR-031–BR-034 | FR-075–FR-088 | BI-050–BI-057 | AC-007؛ ACP-001/002/003 | Pending | Pending | TBD | Partial |
+| الجدول والمعالم والتبعيات | OBJ-004، OBJ-006، OBJ-007 | BR-035–BR-039 | FR-089–FR-102 | BI-058–BI-066 | AC-008؛ ACP-002/004/009 | Pending | Pending | TBD | Partial |
+| العمل والمهام وAgile والهجين | OBJ-004، OBJ-008، OBJ-011 | BR-040–BR-044 | FR-103–FR-118 | BI-067–BI-076 | AC-009؛ ACP-001/002/004/011 | Pending | Pending | TBD | Partial |
+| الموارد والطاقة والمهارات والوقت | OBJ-004، OBJ-006، OBJ-008 | BR-045–BR-050 | FR-119–FR-132 | BI-077–BI-086 | AC-010؛ ACP-001/003/004/005/010 | Pending | Pending | TBD | Partial |
+| الميزانية والتكلفة والتوقع وEVM | OBJ-004، OBJ-005، OBJ-006، OBJ-007 | BR-051–BR-057 | FR-133–FR-148 | BI-087–BI-096 | AC-011؛ ACP-003/004/005/009 | Pending | Pending | TBD | Partial |
+| المشتريات والعقود والموردون والمدفوعات | OBJ-004، OBJ-005، OBJ-006، OBJ-007 | BR-058–BR-064 | FR-149–FR-164 | BI-097–BI-107 | AC-012؛ ACP-001/003/004/005 | Pending | Pending | TBD | Partial |
+| المخرجات والجودة والمراجعة والقبول | OBJ-002، OBJ-004، OBJ-007 | BR-065–BR-069 | FR-165–FR-178 | BI-108–BI-116 | AC-013؛ ACP-002/003/010 | Pending | Pending | TBD | Partial |
+| المخاطر والقضايا والافتراضات والقيود والتبعيات والإجراءات | OBJ-004، OBJ-006، OBJ-007 | BR-070–BR-076 | FR-179–FR-194 | BI-117–BI-126 | AC-014؛ ACP-001/002/004/009 | Pending | Pending | TBD | Partial |
+| إدارة التغيير وضبط خطوط الأساس | OBJ-002، OBJ-004، OBJ-007، OBJ-012 | BR-077–BR-081 | FR-195–FR-208 | BI-127–BI-134 | AC-015؛ ACP-002/003/004 | Pending | Pending | TBD | Partial |
+| الاجتماعات واللجان والقرارات وأصحاب المصلحة والاتصالات | OBJ-002، OBJ-007، OBJ-008 | BR-082–BR-087 | FR-209–FR-222 | BI-135–BI-143 | AC-016؛ ACP-001/002/003/009/010 | Pending | Pending | TBD | Partial |
+| الوثائق والسجلات والقوالب والبحث والمعرفة | OBJ-001، OBJ-007، OBJ-010 | BR-088–BR-093 | FR-223–FR-238 | BI-144–BI-152 | AC-017؛ ACP-001/002/005/006/008/010 | Pending | Pending | TBD | Partial |
+| تقارير الحالة ولوحات المعلومات والتحليلات والتنبيهات | OBJ-001، OBJ-006، OBJ-008 | BR-094–BR-100 | FR-239–FR-256 | BI-153–BI-163 | AC-018؛ ACP-003/004/008/009 | Pending | Pending | TBD | Partial |
+| المنافع والنتائج والقيمة والتقييم اللاحق | OBJ-003، OBJ-006، OBJ-009 | BR-101–BR-105 | FR-257–FR-266 | BI-164–BI-171 | AC-019؛ ACP-001/002/004/009 | Pending | Pending | TBD | Partial |
+| الإغلاق والانتقال إلى التشغيل | OBJ-002، OBJ-007، OBJ-009، OBJ-010 | BR-106–BR-110 | FR-267–FR-276 | BI-172–BI-179 | AC-020؛ ACP-002/003/005/010 | Pending | Pending | TBD | Partial |
+| الهوية والأدوار والصلاحيات والتفويض والتدقيق | OBJ-007، OBJ-011 | BR-111–BR-116 | FR-277–FR-294 | BI-180–BI-189 | AC-021؛ ACP-003/010 | Pending | Pending | TBD | Partial |
+| البيانات والتكاملات والتهيئة وإدارة النظام | OBJ-001، OBJ-005، OBJ-007، OBJ-012 | BR-117–BR-123 | FR-295–FR-312 | BI-190–BI-200 | AC-022؛ ACP-005/006/007/010 | Pending | Pending | TBD | Partial |
+| تجربة المستخدم واللغة وإمكانية الوصول والتعاون | OBJ-008، OBJ-011 | BR-124–BR-128 | FR-313–FR-324 | BI-201–BI-208 | AC-023؛ ACP-001/009/011 | Pending | Pending | TBD | Partial |
+| القدرات الذكية المحكومة | OBJ-006، OBJ-008، OBJ-010، OBJ-011، OBJ-012 | BR-129–BR-132 | FR-325–FR-332 | BI-209–BI-214 | AC-024؛ ACP-012 | Pending | Pending | TBD | Partial |
+
+## 7. تتبع المتطلبات غير الوظيفية
+
+| حزمة NFR | نطاق NFR | عناصر Backlog المرتبطة | التصميم المطلوب | التحقق المطلوب | التغطية |
+|---|---|---|---|---|---|
+| الأداء والسعة وقابلية التوسع | NFR-001–NFR-006 | BI-153–BI-163، BI-190–BI-208 | معمارية الأداء والسعة ونموذج الأحمال | اختبارات أداء وحمل وسعة بأهداف معتمدة | Partial |
+| التوافر والمرونة والاستمرارية والنسخ والاستعادة | NFR-007–NFR-014 | BI-172–BI-179، BI-190–BI-200 | تصميم التوافر والنسخ وRPO/RTO والاستمرارية | اختبارات فشل واستعادة واستمرارية | Partial |
+| أمن الهوية والتطبيق والتكامل | NFR-015–NFR-023 | BI-180–BI-200 | تصميم الأمن والهوية والجلسات والتشفير والأسرار وAPI | فحص ثغرات واختبار اختراق واختبارات وصول | Partial |
+| الخصوصية وإقامة البيانات والتدقيق | NFR-024–NFR-028 | BI-144–BI-152، BI-180–BI-200 | تصنيف البيانات والخصوصية والاحتفاظ والإقامة والتدقيق | اختبارات إخفاء واحتفاظ وصلاحيات وسلامة السجل | Partial |
+| المراقبة وقابلية الصيانة والاختبار | NFR-029–NFR-034 | BI-190–BI-200 | Observability والتسجيل ومعرف الارتباط وإدارة التهيئة | اختبارات مراقبة وأخطاء وقابلية صيانة واختبار | Partial |
+| التوافق والتجاوب والتعريب والوصول وسهولة الاستخدام | NFR-035–NFR-042 | BI-201–BI-208 | UX وDesign System ودعم RTL/LTR والوصول | اختبارات متصفحات وأجهزة ولغتين وإمكانية وصول | Partial |
+| سلامة البيانات وحداثتها وموثوقية التكامل والتزامن والأرشفة | NFR-043–NFR-048 | BI-144–BI-152، BI-190–BI-200 | نموذج البيانات وعقود التكامل والتسوية والتزامن والأرشفة | اختبارات جودة ومطابقة وIdempotency وتعارض واسترجاع | Partial |
+| الدعم والتوثيق والنقل والتكوين والبيئات وبيانات الاختبار | NFR-049–NFR-054 | BI-172–BI-200 | نموذج التشغيل والدعم والبيئات والترقية والتصدير | اختبارات انتقال وتشغيل وRollback وعزل البيئات | Partial |
+| جودة وسلامة القدرات الذكية | NFR-055–NFR-056 | BI-209–BI-214 | تصميم AI وحوكمة البيانات والنماذج والمراجعة البشرية | تقييم دقة وتأصيل وسلامة وخصوصية واختبار الإيقاف | Partial |
+
+## 8. عناصر التتبع الداعمة
+
+| النطاق | المعرفات | التغطية الحالية | الإجراء المطلوب |
+|---|---|---|---|
+| قواعد الأعمال المرشحة | CBR-001–CBR-020 | موجودة كمرشحات وغير معتمدة | مراجعتها وتحويل المعتمد منها إلى سجل قواعد رسمي وربطها بـFR وBI وTC. |
+| ضوابط التحقق | VAL-001–VAL-055 | مرتبطة بمتطلبات الأعمال أو مجموعات FR | ربط كل ضابط بعنصر Backlog ومعيار قبول وحالة اختبار سلبية أو حدية. |
+| الحالات الاستثنائية | SE-001–SE-040 | موثقة في SRS | ربط كل حالة بعنصر Backlog وسيناريو اختبار وحالة اختبار. |
+| كيانات البيانات | DATA-001–DATA-062 | موثقة أوليًا | ربطها بنموذج البيانات والمالك والمصدر وعقد التكامل والترحيل والاختبار. |
+| التقارير واللوحات | DR-001–DR-025 | احتياجات أعمال موثقة | ربطها بـFR-239–FR-256 وعناصر BI-153–BI-163 وتصميم البيانات واختبارات الأرقام. |
+| التكاملات | INT-001–INT-014 | تكاملات مرشحة | تأكيد النظام المصدر والاتجاه والتواتر والعقد والتسوية والفشل ثم ربطها بعناصر BI. |
+| أحداث التدقيق | AUD-001–AUD-027 | متطلبات تدقيق موثقة | ربطها بتصميم الأمن وسجل التدقيق وحالات الاختبار والأدلة. |
+| ملفات القبول المشتركة | ACP-001–ACP-012 | معرفة على مستوى الأنماط | تخصيصها لكل عنصر تسليم وإضافة معايير قبول تفصيلية قابلة للاختبار. |
+
+## 9. فجوات التتبع
+
+| Gap ID | الفجوة | الأثر | الإجراء المطلوب | المالك | الحالة |
+|---|---|---|---|---|---|
+| TG-001 | روابط الأهداف إلى القدرات تحليلية ولم تعتمد من ملاك الاستراتيجية والأعمال. | احتمال اختلاف الأولويات أو قيمة بعض القدرات. | مراجعة OBJ-001–OBJ-012 واعتماد العلاقات ومقاييس النجاح. | Strategy / Business Owner — TBD | Open |
+| TG-002 | CBR-001–CBR-020 قواعد مرشحة وليست قواعد أعمال معتمدة. | لا يمكن تثبيت جميع المسارات والتحققات ومعايير القبول. | مراجعة القواعد وتحديد المالك والسريان والاستثناءات. | PMO and Business Owners — TBD | Open |
+| TG-003 | التتبع الحالي بين BR وFR وBI على مستوى نطاقات القدرات، وليس كل علاقة فردية. | لا يمكن إثبات تغطية كل FR بعنصر تسليم محدد. | إنشاء سجل علاقة تفصيلي لكل FR وربطه بعنصر أو أكثر من BI. | Business/System Analysis — TBD | Open |
+| TG-004 | 190 عنصر تسليم تفصيلي لا يملك كل منها قائمة FR/NFR مفصلة. | عناصر Backlog ليست جاهزة للتنفيذ أو الاختبار. | إضافة Linked Requirements لكل عنصر تفصيلي. | Product Owner / Analysts — TBD | Open |
+| TG-005 | معايير القبول التفصيلية متوفرة على مستوى 24 Epic فقط. | لا يمكن اختبار عناصر التسليم الفردية بصورة كافية. | إنشاء AC تفصيلية لكل عنصر قبل Ready. | Product Owner / QA — TBD | Open |
+| TG-006 | ملفات تصميم الحل والمعمارية والتطبيق لم تبدأ. | لا توجد مراجع تصميم يمكن تتبع المتطلبات إليها. | إعداد Technology Stack وArchitecture وApplication Design وADR. | Architecture / IT — TBD | Open |
+| TG-007 | تصميم البيانات وAPI والتكاملات غير موجود. | حدود مصادر الحقيقة والعقود والتسوية والفشل غير محسومة. | إعداد Data/API/Integration Design وربط DATA وINT وFR وNFR. | Data and Integration Owners — TBD | Open |
+| TG-008 | تصميم الأمن والصلاحيات وفصل المهام غير موجود. | لا يمكن التحقق من الوصول والتفويض والتدقيق والخصوصية. | إعداد Security and Access Control وربط BR-111–BR-123 وNFR-015–NFR-028. | Cybersecurity / IAM — TBD | Open |
+| TG-009 | وثائق UX والتدفقات والشاشات ونظام التصميم لم تبدأ. | لا توجد مراجع شاشة أو تفاعل أو وصول مرتبطة بالمتطلبات. | إعداد UX Foundation وIA/Flows وWireframes وDesign System. | UX / Business — TBD | Open |
+| TG-010 | المقاييس النهائية لمعظم NFRs ما زالت TBD. | لا يمكن تصميم السعة أو قبول الأداء والتوافر والاستعادة والوصول. | اعتماد الأحجام وSLA والتوافر وRPO/RTO والمتصفحات ومعيار الوصول. | Business and IT Operations — TBD | Open |
+| TG-011 | استراتيجية الاختبار والسيناريوهات والحالات لم تبدأ. | لا توجد تغطية اختبار أو أدلة قبول. | إعداد QA Strategy ثم TS وTC وربط كل FR/NFR/SE/VAL. | QA — TBD | Open |
+| TG-012 | لا توجد خطة UAT أو مستخدمون أو بيانات أو بيئات قبول معتمدة. | لا يمكن إثبات قبول الأعمال. | إعداد خطة UAT ومصفوفة المشاركين والبيانات ومعايير الدخول والخروج. | Business Owner / QA — TBD | Open |
+| TG-013 | لا توجد خارطة إصدارات أو سبرنتات. | لا يمكن ربط النطاق بتسليم زمني أو إثبات ما أُصدر. | إعداد Product Roadmap بعد مراجعة الأولويات والمعمارية والاعتماديات. | Product Governance — TBD | Open |
+| TG-014 | الملاك الرسميون والسياسات ومصفوفات الصلاحيات وأنظمة المصدر غير مؤكدة. | تبقى المتطلبات والمسارات والربط في حالة Draft. | حسم PIQ وBOQ وSOQ ذات الصلة وتحديث جميع الوثائق. | Environment Fund — TBD | Open |
+| TG-015 | لا يوجد فحص آلي لمعرفات التتبع والعناصر اليتيمة حتى الآن. | احتمال ظهور فجوات أو معرفات غير متسقة مع توسع الوثائق. | توسيع `scripts/validate_docs.py` لفحص المعرفات والمراجع والتغطية. | Repository Maintainer — TBD | Open |
+
+## 10. ضوابط الجودة والتحديث
+
+عند كل تعديل جوهري يجب تنفيذ الخطوات التالية:
+
+1. التحقق من وجود المعرف في مصدره الرسمي وعدم تكراره.
+2. تحديث العلاقات المتأثرة في هذه المصفوفة.
+3. التحقق من عدم وجود BR أو FR أو NFR أو BI بلا تغطية مطلوبة.
+4. التحقق من أن أي عنصر `Ready` مرتبط بمتطلبات وتصميم ومعايير قبول واختبارات قابلة للتنفيذ.
+5. التحقق من أن أي عنصر منجز مرتبط بأدلة اختبار وإصدار أو Sprint فعلي.
+6. تسجيل البديل عند إلغاء متطلب أو عنصر وعدم حذف التاريخ.
+7. تحديث لوحة التغطية وسجل الفجوات.
+8. تشغيل Markdown Lint والتحقق من هيكل الوثائق والمراجع.
+
+## 11. تقييم الجاهزية
+
+المصفوفة الحالية توفر خط أساس شاملًا على مستوى مجموعات القدرات، وتثبت وجود تغطية نطاقية لجميع:
+
+- 12 هدفًا؛
+- 132 متطلب أعمال؛
+- 332 متطلبًا وظيفيًا؛
+- 56 متطلبًا غير وظيفي؛
+- 214 سجل Backlog؛
+- 24 معيار قبول أوليًا للـEpics؛ و
+- 12 ملف قبول مشتركًا.
+
+مع ذلك، تبقى الوثيقة `Draft` ولا تعتبر جاهزة للتنفيذ؛ لأن التتبع التفصيلي لكل `FR` و`NFR` إلى عنصر تسليم وتصميم واختبار وإصدار لم يكتمل، ولأن القواعد والملاك والأنظمة المصدر والمقاييس والتصاميم والاختبارات والإصدارات ما زالت غير معتمدة أو لم تبدأ.
+
+## 12. سجل المراجعات
+
+| الإصدار | التاريخ | المؤلف | ملخص التغيير |
+|---|---|---|---|
+| 0.1 | سابق | قالب المشروع | إنشاء قالب مصفوفة التتبع. |
+| 0.2 | 2026-07-18 | تحليل أعمال وأنظمة بمساعدة الذكاء الاصطناعي | إنشاء خط أساس عربي شامل لتتبع الأهداف وBR وCBR وFR وNFR وBI وAC والفجوات. |
