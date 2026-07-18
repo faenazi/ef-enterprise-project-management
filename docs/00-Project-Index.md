@@ -13,11 +13,11 @@ This file is the central control point for the Environment Fund Enterprise Proje
 | Product / System Owner | TBD — to be confirmed by the Environment Fund |
 | Project Type | Enterprise Project Portfolio Management / Project Management Information System |
 | Project Size | Large / Enterprise-wide |
-| Current Phase | Comprehensive business requirements documentation |
+| Current Phase | Detailed system requirements documentation and validation |
 | Delivery Approach | Documentation First → Agile Sprint Delivery |
 | Target Scope | Complete target-state enterprise platform; not limited to an MVP or task-tracking tool |
 | Solution / Technology | TBD — technology-neutral until requirements, fit-gap, architecture, security, operations, and commercial constraints are evaluated |
-| Documentation Language | English repository documentation with Arabic and bilingual solution requirements where applicable |
+| Documentation Language | English governance documentation with detailed Arabic system requirements and bilingual solution requirements where applicable |
 | Last Updated | 2026-07-18 |
 
 ## Scope Commitment
@@ -78,40 +78,41 @@ Allowed document statuses: `Not Started`, `Draft`, `Under Review`, `Ready`, and 
 |---|---|---|---|---|
 | Project Overview | TBD | Draft | Business and system ownership, current-state evidence, governance owners, and confirmed constraints remain to be validated | 2026-07-18 |
 | Business Requirements | TBD | Draft | Comprehensive baseline exists; current-state evidence, owners, approval rules, policies, systems of record, and stakeholder validation remain open | 2026-07-18 |
-| System Requirements | TBD | Not Started | Depends on reviewed business requirements and confirmed rules | 2026-07-18 |
-| Delivery Backlog | TBD | Not Started | Depends on sufficiently documented and reviewed requirements | 2026-07-18 |
+| System Requirements | TBD | Draft | Arabic SRS baseline contains 332 FRs and 56 NFRs; business validation, confirmed rules, roles, approvals, thresholds, source systems, integration contracts, measurable service targets, and detailed acceptance criteria remain open | 2026-07-18 |
+| Delivery Backlog | TBD | Not Started | Depends on sufficiently reviewed requirements, detailed acceptance criteria, dependencies, and readiness decisions | 2026-07-18 |
 | Traceability Matrix | TBD | Not Started | Depends on stable business, functional, non-functional, backlog, design, and test identifiers | 2026-07-18 |
 | Technology Stack | TBD | Not Started | Solution type, hosting, architecture, licensing, support, and fit-gap decisions are not confirmed | 2026-07-18 |
-| Solution Overview and Architecture | TBD | Not Started | Depends on requirements and solution-type decisions | 2026-07-18 |
+| Solution Overview and Architecture | TBD | Not Started | Depends on reviewed requirements and solution-type decisions | 2026-07-18 |
 | Application Architecture | TBD | Not Started | Depends on confirmed solution type, modules, system requirements, and backlog | 2026-07-18 |
-| Data, API, and Integration Design | TBD | Not Started | Systems of record, data ownership, interfaces, fields, and integration constraints require confirmation | 2026-07-18 |
-| Security and Access Control | TBD | Not Started | Roles, data classification, identity, policies, and segregation-of-duties rules require confirmation | 2026-07-18 |
-| Non-Functional and Operational Design | TBD | Not Started | Measurable performance, service, recovery, support, and operational targets require confirmation | 2026-07-18 |
-| UX Foundation and Users | TBD | Not Started | User groups, goals, contexts, evidence, language, and accessibility targets require confirmation | 2026-07-18 |
-| Information Architecture, Flows, and Screens | TBD | Not Started | Depends on complete workflows, roles, requirements, and system boundaries | 2026-07-18 |
-| Wireframes and Interaction Behavior | TBD | Not Started | Depends on the screen inventory and flow catalog | 2026-07-18 |
-| Design System and Implementation Guidance | TBD | Not Started | Requires authoritative Environment Fund brand assets and confirmed implementation stack | 2026-07-18 |
-| QA Strategy and Test Plan | TBD | Not Started | Depends on requirements, risks, architecture, integrations, and environments | 2026-07-18 |
-| Test Scenarios | TBD | Not Started | Depends on requirements, rules, workflows, interfaces, risks, and planned controls | 2026-07-18 |
-| Planned Test Cases | TBD | Not Started | Depends on approved scenarios and expected behavior | 2026-07-18 |
-| UAT and Defect Management Plan | TBD | Not Started | Participants, environments, data, scope, and governance require confirmation | 2026-07-18 |
+| Data, API, and Integration Design | TBD | Not Started | Systems of record, data ownership, interfaces, fields, contracts, frequency, reconciliation, and failure behavior require confirmation | 2026-07-18 |
+| Security and Access Control | TBD | Not Started | Roles, data classification, identity, policies, approval matrices, delegation, and segregation-of-duties rules require confirmation | 2026-07-18 |
+| Non-Functional and Operational Design | TBD | Not Started | Measurable performance, availability, capacity, recovery, support, monitoring, continuity, and operational targets require confirmation | 2026-07-18 |
+| UX Foundation and Users | TBD | Not Started | User groups, goals, contexts, evidence, language, accessibility, device, and external-user needs require confirmation | 2026-07-18 |
+| Information Architecture, Flows, and Screens | TBD | Not Started | Depends on reviewed workflows, roles, requirements, lifecycle states, and system boundaries | 2026-07-18 |
+| Wireframes and Interaction Behavior | TBD | Not Started | Depends on the approved screen inventory, flow catalog, permissions, fields, and states | 2026-07-18 |
+| Design System and Implementation Guidance | TBD | Not Started | Requires authoritative Environment Fund brand assets, accessibility requirements, and confirmed implementation stack | 2026-07-18 |
+| QA Strategy and Test Plan | TBD | Not Started | Depends on reviewed requirements, risks, architecture, integrations, environments, and measurable targets | 2026-07-18 |
+| Test Scenarios | TBD | Not Started | Depends on requirements, rules, workflows, interfaces, lifecycle states, risks, and planned controls | 2026-07-18 |
+| Planned Test Cases | TBD | Not Started | Depends on approved scenarios, detailed expected behavior, data, environments, and acceptance criteria | 2026-07-18 |
+| UAT and Defect Management Plan | TBD | Not Started | Participants, environments, data, scope, governance, and readiness criteria require confirmation | 2026-07-18 |
 | QA Summary and Release Readiness | TBD | Not Started | No execution evidence exists; document remains planned | 2026-07-18 |
-| Product Roadmap and Release Plan | TBD | Not Started | Depends on the complete backlog, architecture, dependencies, priorities, and delivery constraints | 2026-07-18 |
+| Product Roadmap and Release Plan | TBD | Not Started | Depends on complete backlog, architecture, dependencies, priorities, capacity, and delivery constraints | 2026-07-18 |
 | Active Sprint Plan | TBD | Not Started | Implementation is not authorized and no scope is Ready | 2026-07-18 |
 | Active Sprint Status | TBD | Not Started | No active implementation sprint | 2026-07-18 |
-| Release and Transition Plan | TBD | Not Started | Depends on release scope, evidence, environments, operations, and support model | 2026-07-18 |
+| Release and Transition Plan | TBD | Not Started | Depends on release scope, QA evidence, environments, security, operations, rollback, and support model | 2026-07-18 |
 
 ## Current Documentation Workstream
 
-The active workstream is comprehensive business requirements documentation and validation.
+The active workstream is detailed Arabic system requirements documentation and validation.
 
 ```text
 Project foundation
 → Project Overview
 → Comprehensive Business Requirements baseline
+→ Detailed Arabic System Requirements baseline
 → Current-state evidence and stakeholder validation
-→ Confirmed Business Rules
-→ Complete System Requirements
+→ Confirmed Business Rules, roles, approvals, and measurable NFR targets
+→ Detailed acceptance criteria
 → Delivery Backlog and Traceability
 → Solution Design
 → UI/UX
@@ -121,6 +122,25 @@ Project foundation
 ```
 
 No implementation, production configuration, procurement commitment, or technology decision is authorized by the current documentation status.
+
+## System Requirements Baseline Summary
+
+The current Arabic SRS draft establishes the following initial baseline:
+
+- 332 functional requirements across 24 capability groups
+- 27 initial user and stakeholder roles
+- 16 primary record lifecycle models
+- 55 validation and business-rule enforcement controls
+- 62 business data entities or domains
+- 25 reports and dashboards
+- 14 candidate enterprise integrations
+- 40 notifications, reminders, and escalation events
+- 27 audit requirements
+- 56 non-functional requirements
+- 40 business exceptions and edge cases
+- 50 system open questions
+
+These counts describe the current draft only. They do not indicate approval, completion, implementation readiness, or test coverage.
 
 ## Documentation Readiness Checklist
 
@@ -147,12 +167,14 @@ This checklist records implementation readiness and does not represent a formal 
 | ID | Question / Confirmation | Impact | Owner | Status |
 |---|---|---|---|---|
 | PIQ-001 | Confirm the formal business owner, product owner, system owner, document owners, and governance body. | Ownership, reviews, decisions, and escalation cannot be finalized. | Environment Fund | Open |
-| PIQ-002 | Provide authoritative project-management policies, procedures, templates, approval matrices, reports, and sample records. | Current-state analysis and business rules cannot be completed without evidence. | Environment Fund | Open |
-| PIQ-003 | Confirm organizational scope, user populations, external participants, and controlled-access requirements. | Roles, licensing, security, data scope, and UX remain incomplete. | Environment Fund | Open |
-| PIQ-004 | Confirm systems of record and integration boundaries, including finance, procurement, contracts, documents, identity, HR, analytics, correspondence, strategy, and risk. | Data ownership and solution boundaries remain provisional. | Environment Fund | Open |
-| PIQ-005 | Confirm enterprise architecture, cybersecurity, data governance, hosting, privacy, accessibility, records, and continuity standards. | Technology and control decisions cannot be confirmed. | Environment Fund | Open |
-| PIQ-006 | Confirm project classifications, governance paths, stage gates, scoring models, health thresholds, reporting cycles, and approval matrices. | Workflows, permissions, reports, and validations remain provisional. | Environment Fund | Open |
-| PIQ-007 | Confirm historical data, migration, retention, archival, and decommissioning scope. | Migration and transition requirements remain unclear. | Environment Fund | Open |
+| PIQ-002 | Provide authoritative project-management policies, procedures, templates, approval matrices, reports, and sample records. | Current-state analysis, business rules, workflows, and detailed acceptance behavior cannot be completed without evidence. | Environment Fund | Open |
+| PIQ-003 | Confirm organizational scope, user populations, external participants, and controlled-access requirements. | Roles, licensing, security, data scope, collaboration, and UX remain incomplete. | Environment Fund | Open |
+| PIQ-004 | Confirm systems of record and integration boundaries, including finance, procurement, contracts, documents, identity, HR, analytics, correspondence, strategy, risk, and execution tools. | Data ownership, field contracts, synchronization, reconciliation, and solution boundaries remain provisional. | Environment Fund | Open |
+| PIQ-005 | Confirm enterprise architecture, cybersecurity, data governance, hosting, privacy, accessibility, records, and continuity standards. | Technology, security, privacy, retention, accessibility, and operational controls cannot be confirmed. | Environment Fund | Open |
+| PIQ-006 | Confirm project classifications, governance paths, stage gates, scoring models, health thresholds, reporting cycles, approval matrices, delegation, and segregation of duties. | Workflows, permissions, reports, validations, alerts, and acceptance criteria remain provisional. | Environment Fund | Open |
+| PIQ-007 | Confirm measurable performance, availability, capacity, support, monitoring, RPO, RTO, service-hour, browser, device, and accessibility targets. | NFRs remain directional rather than implementation-ready. | Environment Fund | Open |
+| PIQ-008 | Confirm historical data, migration, retention, archival, legal-hold, and decommissioning scope. | Migration, records, transition, and data-volume requirements remain unclear. | Environment Fund | Open |
+| PIQ-009 | Confirm which intelligent capabilities are required and their data, hosting, human-review, safety, and evaluation controls. | AI requirements cannot be designed or released safely. | Environment Fund | Open |
 
 ## Notes
 
