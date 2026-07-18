@@ -13,12 +13,12 @@ This file is the central control point for the Environment Fund Enterprise Proje
 | Product / System Owner | TBD — to be confirmed by the Environment Fund |
 | Project Type | Enterprise Project Portfolio Management / Project Management Information System |
 | Project Size | Large / Enterprise-wide |
-| Current Phase | Technology-stack and solution-architecture baseline with confirmed integration-scope harmonization |
+| Current Phase | Technology, solution-architecture, and application-architecture baselines with confirmed integration-scope harmonization |
 | Delivery Approach | Documentation First → Agile Sprint Delivery |
 | Target Scope | Complete target-state enterprise platform; not limited to an MVP or task-tracking tool |
 | Solution / Technology | Custom React SPA using React 19.2, TypeScript 6.0, Vite 8.1, Tailwind CSS 4.3, ASP.NET Core on .NET 10 LTS, EF Core 10, and SQL Server 2025; Modular Monolith with business modules and Vertical Slices |
 | Confirmed Direct Integrations | Oracle Fusion Cloud ERP; Microsoft Entra ID for SSO; Microsoft Exchange for enterprise email and calendar capabilities |
-| Documentation Language | English governance documentation with detailed Arabic requirements and delivery backlog; bilingual solution requirements where applicable |
+| Documentation Language | English governance documentation with detailed Arabic requirements, backlog, and solution-design documentation; bilingual solution requirements where applicable |
 | Last Updated | 2026-07-18 |
 
 ## Confirmed Integration Scope
@@ -39,7 +39,7 @@ The following direct enterprise integrations are confirmed as the complete integ
    - The detailed scope may include system notifications, email delivery, calendar events, meeting invitations, and related approved interactions.
    - Exact service endpoints, permissions, mailboxes, identities, templates, throttling, delivery tracking, calendar ownership, and failure handling remain to be designed.
 
-No other direct enterprise integration is currently in scope. In particular, prior draft references to OpenText ECM, HR platforms, analytics platforms, correspondence systems, strategy systems, risk systems, ITSM tools, execution tools, or any other external platform are superseded by this decision and must be removed, marked out of scope, or converted into non-integrated manual or file-based behavior where separately required.
+No other direct enterprise integration is currently in scope. Prior draft references to OpenText ECM, HR platforms, analytics platforms, correspondence systems, strategy systems, risk systems, ITSM tools, execution tools, or any other external platform are superseded and must be removed, marked out of scope, or converted into non-integrated manual or file-based behavior where separately required.
 
 This decision confirms the integration boundary only. It does not approve specific APIs, technical patterns, credentials, commercial products beyond the named platforms, or production configuration.
 
@@ -125,12 +125,12 @@ Allowed document statuses: `Not Started`, `Draft`, `Under Review`, `Ready`, and 
 |---|---|---|---|---|
 | Project Overview | TBD | Draft | Must be harmonized with the confirmed three-system integration scope; business and system ownership, current-state evidence, governance owners, and confirmed constraints remain to be validated | 2026-07-18 |
 | Business Requirements | TBD | Draft | Must remove or mark out of scope any integration beyond Oracle Fusion Cloud ERP, Microsoft Entra ID, and Microsoft Exchange; current-state evidence, owners, approval rules, policies, detailed data ownership, and stakeholder validation remain open | 2026-07-18 |
-| System Requirements | TBD | Draft | Arabic SRS baseline contains 332 FRs and 56 NFRs; its current candidate integration catalog must be reduced to the three confirmed integrations, while exact objects, APIs, directions, frequencies, reconciliation, security, and service targets remain open | 2026-07-18 |
+| System Requirements | TBD | Draft | Arabic SRS baseline contains 332 FRs and 56 NFRs; its candidate integration catalog must be reduced to the three confirmed integrations, while exact objects, APIs, directions, frequencies, reconciliation, security, and service targets remain open | 2026-07-18 |
 | Delivery Backlog | TBD | Draft | Arabic baseline contains 24 epics and 190 detailed delivery items; integration items must be harmonized to the three confirmed integrations, and all records remain Not Ready pending reviewed requirements, design, security, UX, acceptance, and test readiness | 2026-07-18 |
 | Traceability Matrix | TBD | Draft | Baseline traceability exists and records the confirmed integration boundary; detailed requirement-to-design, test, and release links remain open | 2026-07-18 |
 | Technology Stack | TBD | Draft | React, .NET, SQL Server, Tailwind, Modular Monolith, Vertical Slices, and core engineering constraints are documented; hosting, security, operations, licensing review, and measurable NFR targets remain open | 2026-07-18 |
 | Solution Overview and Architecture | TBD | Draft | Arabic baseline defines 33 logical components, 16 proposed business modules, system context, critical flows, deployment boundaries, 20 ADRs, and 20 architecture risks/questions; hosting, final module ownership, detailed contracts, security, data, and operational targets remain open | 2026-07-18 |
-| Application Architecture | TBD | Not Started | Must detail project structure, module contracts, Vertical Slices, dependency rules, internal events, errors, validation, and implementation patterns | 2026-07-18 |
+| Application Architecture | TBD | Draft | Arabic baseline defines repository and project structure, 16 module boundaries, Vertical Slices, dependency rules, contracts, domain events, SQL ownership, transactions, Outbox, API, React, security, testing, conventions, and 20 AAQs; detailed data, API, integration, security, UX, and measurable NFR decisions remain open | 2026-07-18 |
 | Data, API, and Integration Design | TBD | Not Started | Must design only Oracle Fusion Cloud ERP, Microsoft Entra ID SSO, and Microsoft Exchange; authoritative objects, ownership, interfaces, fields, contracts, frequency, reconciliation, security, and failure behavior require confirmation | 2026-07-18 |
 | Security and Access Control | TBD | Not Started | Entra ID is confirmed for SSO; roles, data classification, identity claims, policies, approval matrices, delegation, external access, and segregation-of-duties rules require confirmation | 2026-07-18 |
 | Non-Functional and Operational Design | TBD | Not Started | Measurable performance, availability, capacity, recovery, support, monitoring, continuity, Exchange delivery, and integration service targets require confirmation | 2026-07-18 |
@@ -150,7 +150,7 @@ Allowed document statuses: `Not Started`, `Draft`, `Under Review`, `Ready`, and 
 
 ## Current Documentation Workstream
 
-The active workstream is completing the technology and solution-architecture baselines, harmonizing requirement documents with the confirmed integration scope, and preparing detailed application, data, integration, security, and operational designs.
+The active workstream is completing the detailed application architecture and proceeding to data, API, integration, security, and operational design while harmonizing all requirements with the confirmed integration scope.
 
 ```text
 Project foundation
@@ -162,7 +162,7 @@ Project foundation
 → Confirmed integration-scope harmonization
 → Technology Stack baseline
 → Solution Overview and Architecture baseline
-→ Application Architecture
+→ Application Architecture baseline
 → Data, API, and Integration Design
 → Security and Access Control
 → Non-Functional and Operational Design
@@ -176,20 +176,20 @@ No implementation, production configuration, procurement commitment, hosting dec
 
 ## System Requirements Baseline Summary
 
-The current Arabic SRS draft establishes the following initial baseline:
+The current Arabic SRS draft establishes:
 
-- 332 functional requirements across 24 capability groups
-- 27 initial user and stakeholder roles
-- 16 primary record lifecycle models
-- 55 validation and business-rule enforcement controls
-- 62 business data entities or domains
-- 25 reports and dashboards
-- 14 candidate integration records that must now be harmonized to the 3 confirmed direct integrations
-- 40 notifications, reminders, and escalation events
-- 27 audit requirements
-- 56 non-functional requirements
-- 40 business exceptions and edge cases
-- 50 system open questions
+- 332 functional requirements across 24 capability groups;
+- 27 initial user and stakeholder roles;
+- 16 primary record lifecycle models;
+- 55 validation and business-rule enforcement controls;
+- 62 business data entities or domains;
+- 25 reports and dashboards;
+- 14 candidate integration records that must be harmonized to the 3 confirmed direct integrations;
+- 40 notifications, reminders, and escalation events;
+- 27 audit requirements;
+- 56 non-functional requirements;
+- 40 business exceptions and edge cases; and
+- 50 system open questions.
 
 These counts describe the current draft only. They do not indicate approval, completion, implementation readiness, or test coverage. The previous candidate integration count is not an approved scope count.
 
@@ -197,18 +197,18 @@ These counts describe the current draft only. They do not indicate approval, com
 
 The current Arabic Delivery Backlog draft establishes:
 
-- 24 epics aligned with the 24 SRS functional capability groups
-- 190 detailed delivery items
-- 152 features
-- 14 configuration items
-- 8 integration items that must be reviewed and reduced or reclassified against the 3 confirmed integrations
-- 3 data or migration items
-- 9 technical enablers
-- 4 governed AI use cases
-- 12 shared acceptance profiles
-- 24 initial epic-level acceptance criteria
-- 12 material dependencies and 12 backlog gaps
-- 214 total `BI` records including epics and delivery items
+- 24 epics aligned with the 24 SRS functional capability groups;
+- 190 detailed delivery items;
+- 152 features;
+- 14 configuration items;
+- 8 integration items that must be reviewed and reduced or reclassified against the 3 confirmed integrations;
+- 3 data or migration items;
+- 9 technical enablers;
+- 4 governed AI use cases;
+- 12 shared acceptance profiles;
+- 24 initial epic-level acceptance criteria;
+- 12 material dependencies and 12 backlog gaps; and
+- 214 total `BI` records including epics and delivery items.
 
 All backlog records remain `Not Ready` and `Not Started`. No target release or sprint has been assigned.
 
@@ -219,8 +219,8 @@ The current Arabic solution-architecture draft establishes:
 - 33 logical architecture components from `ARCMP-001` through `ARCMP-033`;
 - 16 proposed business modules with explicit ownership boundaries;
 - 3 confirmed direct integration boundaries;
-- 5 Mermaid views covering context, logical architecture, module relationships, request flow, and deployment;
-- 5 critical end-to-end business and integration flows;
+- multiple Mermaid views covering context, logical architecture, module relationships, request flow, integrations, and deployment;
+- critical end-to-end business and integration flows;
 - 20 architecture decisions from `ADR-001` through `ADR-020`;
 - 20 architecture risks or open questions from `AR-001` through `AR-020`;
 - logical trust zones and security controls;
@@ -228,6 +228,26 @@ The current Arabic solution-architecture draft establishes:
 - readiness criteria for detailed design.
 
 This is a `Draft` architecture baseline. It does not confirm hosting, detailed data contracts, production topology, security configuration, service targets, or final module ownership.
+
+## Application Architecture Baseline Summary
+
+The current Arabic application-architecture draft establishes:
+
+- one implementation Assembly per business module as the initial project-granularity baseline;
+- optional dedicated Contracts projects only where stable cross-module contracts are required;
+- 16 proposed module ownership boundaries mapped to FR and BI ranges;
+- a controlled module-dependency matrix and prohibition of direct cross-module DbContext or table access;
+- Vertical Slice structures for Commands and Queries;
+- Domain Model, Aggregate, Value Object, Domain Event, and contract conventions;
+- one DbContext and SQL Schema per module as the logical ownership baseline;
+- transaction, optimistic-concurrency, Outbox, worker, retry, and idempotency rules;
+- API, OpenAPI, validation, Problem Details, authentication, authorization, and audit conventions;
+- React module, feature, API-client, state, form, routing, localization, and accessibility conventions;
+- test boundaries from domain tests through architecture, integration, contract, component, and E2E tests;
+- prohibited anti-patterns and package/generated-code controls; and
+- 20 application-architecture questions or risks from `AAQ-001` through `AAQ-020`.
+
+The document is `Draft`. Module ownership, storage, scheduling, API versioning, generated-client tooling, integration contracts, security controls, and measurable targets remain open.
 
 ## Documentation Readiness Checklist
 
@@ -244,6 +264,7 @@ Implementation may begin only when the selected scope satisfies all applicable c
 - [ ] Systems of record, ownership, contracts, synchronization, reconciliation, and failure behavior are defined for the confirmed integrations.
 - [ ] The confirmed React, .NET, SQL Server, and Tailwind baseline is reflected consistently across architecture, implementation, DevOps, security, and QA documents.
 - [ ] Logical architecture components, module boundaries, data ownership, and allowed dependencies are reviewed.
+- [ ] Module contracts, Vertical Slices, transaction boundaries, Outbox behavior, API conventions, and architecture-test rules are reviewed.
 - [ ] Backlog items selected for the sprint meet the Definition of Ready.
 - [ ] Traceability has no unresolved gap that blocks implementation.
 - [ ] QA strategy, scenarios, planned cases, evidence expectations, environments, and test data are defined.
@@ -266,7 +287,7 @@ This checklist records implementation readiness and does not represent a formal 
 | PIQ-008 | Confirm historical data, migration, retention, archival, legal-hold, and decommissioning scope. | Migration, records, transition, data-volume requirements, and related backlog items remain unclear. | Environment Fund | Open |
 | PIQ-009 | Confirm which intelligent capabilities are required and their data, hosting, human-review, safety, and evaluation controls. | AI backlog items cannot be designed or released safely. | Environment Fund | Open |
 | PIQ-010 | Confirm prioritization principles and constraints for allocating the backlog to releases. | No target release or sprint can be assigned responsibly. | Project governance | Open |
-| PIQ-011 | Confirm hosting, CI/CD, artifact registry, telemetry backend, environment strategy, file-storage platform, and final business-module ownership for the approved architecture. | Deployment, observability, security, cost, module governance, and operational readiness cannot be completed. | Enterprise Architecture / Operations | Open |
+| PIQ-011 | Confirm hosting, CI/CD, artifact registry, telemetry backend, environment strategy, file-storage platform, scheduler, API-client generator, architecture-test tool, and final business-module ownership. | Deployment, observability, security, cost, module governance, and operational readiness cannot be completed. | Enterprise Architecture / Operations | Open |
 
 ## Notes
 
@@ -274,8 +295,10 @@ This checklist records implementation readiness and does not represent a formal 
 - The technology baseline is confirmed as React, TypeScript, Vite, Tailwind CSS, ASP.NET Core on .NET 10 LTS, EF Core, and SQL Server 2025.
 - The architecture baseline is Modular Monolith with business modules and Vertical Slices, plus a feature-based React frontend.
 - The solution-architecture document defines a logical baseline and does not select a hosting product.
+- The application-architecture document defines implementation boundaries and conventions but does not authorize implementation.
 - Do not reintroduce another direct integration without an explicit documented scope decision.
 - Do not replace the approved stack or introduce a new architectural style without an explicit ADR and impact assessment.
+- Do not bypass module contracts, transaction boundaries, Outbox controls, or API security during implementation.
 - Expand documentation according to the enterprise scale and complexity of this project.
 - Do not remove a target business capability merely because it is not selected for an early release.
 - Do not invent missing information.
