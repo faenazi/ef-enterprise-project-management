@@ -1,89 +1,604 @@
-# Delivery Backlog
+# سجل الأعمال التنفيذي (Delivery Backlog)
 
-## Purpose
+## الغرض
 
-Convert sufficiently documented and reviewed requirements into prioritized, traceable, and executable delivery items. The backlog supports custom development, low-code, enterprise platforms, data, integration, AI, and vendor-delivered projects.
+تحويل متطلبات الأعمال ومتطلبات النظام الموثقة لمنصة إدارة المشاريع المؤسسية لصندوق البيئة إلى سجل أعمال متدرج وقابل للتتبع، يمكن استخدامه لاحقًا في تخطيط الإصدارات والسبرنتات بعد اكتمال التصميم وحسم القرارات المفتوحة.
 
-## Document Information
+لا يمثل هذا السجل خطة تنفيذ معتمدة، ولا يعني أن أي عنصر أصبح جاهزًا للتطوير. جميع العناصر في هذا الإصدار بحالة `Not Ready` لأن متطلبات الأعمال ووثيقة SRS ما زالتا في حالة `Draft`، ولأن المعمارية والتصميم والتكاملات والأمن وتجربة المستخدم والاختبارات لم تعتمد بعد.
 
-| Field | Value |
+## معلومات الوثيقة
+
+| الحقل | القيمة |
 |---|---|
-| Project | {{PROJECT_NAME}} |
-| Document Owner | {{DOCUMENT_OWNER}} |
-| Prepared By | {{PREPARED_BY}} |
-| Reviewed By | {{REVIEWED_BY}} |
-| Version | 0.1 |
-| Status | Draft |
-| Classification | Internal |
-| Last Updated | {{LAST_UPDATED}} |
+| المشروع | منصة إدارة المشاريع المؤسسية لصندوق البيئة |
+| الاسم الإنجليزي | Environment Fund Enterprise Project Management Platform |
+| نوع الوثيقة | Delivery Backlog |
+| مالك الوثيقة | TBD — يحدد من صندوق البيئة |
+| أُعدت بواسطة | تحليل أعمال وأنظمة بمساعدة الذكاء الاصطناعي وتحت توجيه المستخدم |
+| المراجعون | TBD — PMO والأعمال وIT والمالية والمشتريات والعقود والأمن والبيانات والجودة والتشغيل |
+| الإصدار | 0.2 |
+| الحالة | Draft |
+| التصنيف | Internal |
+| آخر تحديث | 2026-07-18 |
 
-## Required Context
+## السياق المطلوب
 
-1. `docs/01-Requirements/02-Business-Requirements.md`
-2. `docs/01-Requirements/03-System-Requirements.md`
+1. `docs/00-Project-Index.md`
+2. `docs/01-Requirements/01-Project-Overview.md`
+3. `docs/01-Requirements/02-Business-Requirements.md`
+4. `docs/01-Requirements/03-System-Requirements.md`
 
-## AI Instructions
+## قواعد إدارة السجل
 
-- Create backlog items only from documented scope.
-- Link each item to at least one requirement or explicitly mark it as an enabling technical item.
-- Choose the appropriate item type; do not force every project into user stories.
-- Do not mark an item Ready when requirements, dependencies, or acceptance criteria remain materially unclear.
-- Keep implementation choices aligned with confirmed solution-design decisions.
+- لا ينشأ عنصر إلا من نطاق موثق أو كعنصر تمكيني واضح يخدم متطلبات موثقة.
+- يرتبط كل عنصر بمتطلبات أعمال وبقسم SRS، ثم يوسع الربط إلى معرفات `FR` و`NFR` في مصفوفة التتبع.
+- الـEpic ليس عنصرًا قابلًا للتنفيذ داخل Sprint مباشرة؛ يجب تفكيكه إلى عناصر أصغر تستوفي تعريف الجاهزية.
+- لا توضع تواريخ أو إصدارات أو سبرنتات تقديرية قبل اعتماد الأولويات والمعمارية والاعتماديات والطاقة.
+- لا يتغير العنصر إلى `Ready` ما دامت هناك فجوة تتطلب من فريق التنفيذ اختراع قرار أعمال أو تصميم أو معيار قبول.
+- لا يعني إدراج عنصر الموافقة على التقنية أو المنتج أو المورد.
+- تحفظ جميع عمليات الإضافة والتعديل والتقسيم والدمج والإلغاء، ولا يعاد استخدام أي معرف.
+- تكون الأولوية `Must` أو `Should` في هذا الإصدار، ولا تعني الأولوية وحدها ترتيب التنفيذ.
 
-## 1. Backlog Structure
-
-Supported item types include:
-
-- Epic
-- Feature
-- User Story
-- Configuration Item
-- Fit-Gap Item
-- Integration Item
-- Data / Migration Item
-- AI Use Case
-- Technical Enabler
-
-## 2. Definition of Ready
-
-An item is Ready when:
-
-- Its purpose and scope are clear.
-- Linked requirements are identified.
-- Acceptance criteria are testable.
-- Material dependencies and open questions are resolved or explicitly accepted.
-- Required design context is available for implementation.
-
-## 3. Backlog
-
-| ID | Type | Epic / Feature | Delivery Item | Linked Requirements | Priority | Dependencies | Target Release / Sprint | Readiness | Status |
-|---|---|---|---|---|---|---|---|---|---|
-| BI-001 | User Story / Enabler / Other | {{EPIC_OR_FEATURE}} | {{DELIVERY_ITEM}} | FR-001 | Must | {{DEPENDENCIES}} | {{TARGET}} | Not Ready | Not Started |
-
-## 4. User Story Format
-
-Use when the backlog item is best expressed as a user story:
+## 1. هيكل السجل ومعايير الترقيم
 
 ```text
-As a {{USER_ROLE}},
-I want {{CAPABILITY}},
-so that {{BUSINESS_VALUE}}.
+Epic
+└── Feature / Configuration / Integration / Data / AI / Technical Enabler
+    └── User Story / Task / Sub-item عند تخطيط الإصدار والسبرنت
 ```
 
-## 5. Acceptance Criteria
+| المعرف | الاستخدام |
+|---|---|
+| `BI-###` | معرف ثابت لكل Epic أو عنصر تسليم |
+| `AC-###` | معيار قبول تفصيلي |
+| `ACP-###` | ملف قبول مشترك يحدد نمط التحقق |
+| `DEP-###` | اعتمادية أو قرار لازم للجاهزية |
+| `BG-###` | فجوة أو سؤال في السجل |
 
-| Backlog ID | AC ID | Given | When | Then | Related Requirement |
-|---|---|---|---|---|---|
-| BI-001 | AC-001 | {{PRECONDITION}} | {{ACTION}} | {{EXPECTED_RESULT}} | FR-001 |
+## 2. تعريف الجاهزية (Definition of Ready)
 
-## 6. Backlog Gaps and Open Questions
+لا يعد العنصر جاهزًا إلا عند تحقق جميع الشروط المطبقة:
 
-| ID | Gap / Question | Impacted Items | Owner | Status |
+- [ ] الهدف والقيمة والنطاق وحدود العنصر واضحة.
+- [ ] العنصر مرتبط بمتطلبات الأعمال ومعرفات `FR` و`NFR` ذات العلاقة.
+- [ ] الأدوار ونطاق البيانات ومسار الحالات والصلاحيات معروفة.
+- [ ] الحقول والقواعد والتحققات والاستثناءات الأساسية موثقة.
+- [ ] التصميم الوظيفي وUI/UX وعقود التكامل المطلوبة متاحة.
+- [ ] المتطلبات الأمنية وغير الوظيفية القابلة للقياس محددة.
+- [ ] معايير القبول وحالات الاختبار وبيانات الاختبار قابلة للتنفيذ.
+- [ ] الاعتماديات والأسئلة المانعة محلولة أو مقبولة رسميًا مع مالك وخطة.
+- [ ] لا يحتاج فريق التنفيذ إلى اختراع قرار أعمال أو تقنية أو صلاحية.
+
+## 3. تعريف الاكتمال (Definition of Done)
+
+- [ ] تنفيذ النطاق المعتمد فقط وربطه بالمعرفات.
+- [ ] اجتياز معايير القبول والاختبارات المطلوبة مع أدلة فعلية.
+- [ ] تطبيق الصلاحيات والتحقق والتدقيق والأمن وإمكانية الوصول ذات العلاقة.
+- [ ] تحديث الوثائق ومصفوفة التتبع وحالة السبرنت.
+- [ ] تسجيل العيوب والقيود والمخاطر المتبقية وعدم إخفائها.
+- [ ] مراجعة مالك المنتج أو الجهة المخولة وفق آلية القبول.
+
+## 4. الاعتماديات والقرارات المطلوبة
+
+| المعرف | الاعتمادية / القرار |
+|---|---|
+| DEP-001 | تأكيد ملاك الأعمال والنظام والبيانات والوثائق ومسؤوليات المراجعة والاعتماد. |
+| DEP-002 | تأكيد السياسات والإجراءات والتصنيفات والبوابات ومصفوفات الصلاحيات والعتبات. |
+| DEP-003 | تأكيد أنظمة المصدر وحدود التكامل والملكية واتجاه وتواتر تبادل البيانات. |
+| DEP-004 | اعتماد نوع الحل والمعمارية والتقنيات ونموذج الاستضافة والبيئات. |
+| DEP-005 | اعتماد متطلبات الأمن والخصوصية وتصنيف البيانات والسجلات والاحتفاظ وفصل المهام. |
+| DEP-006 | اعتماد أهداف الأداء والتوافر والسعة وRPO وRTO والمراقبة والدعم. |
+| DEP-007 | اعتماد بنية المعلومات والتدفقات والشاشات ونظام التصميم واللغة وإمكانية الوصول. |
+| DEP-008 | اعتماد مؤشرات الأداء وقواعد الصحة ودورات التقارير والعتبات ومنهجيات الاحتساب. |
+| DEP-009 | تأكيد نطاق البيانات التاريخية والترحيل والتنقية والمطابقة وإيقاف الأدوات الحالية. |
+| DEP-010 | تأكيد وصول الموردين والاستشاريين والمستخدمين الخارجيين وضوابط هوياتهم. |
+| DEP-011 | اعتماد حالات استخدام الذكاء الاصطناعي والحوكمة والنماذج والاستضافة والتقييم والمراجعة البشرية. |
+| DEP-012 | إعداد استراتيجية الاختبار والبيئات والبيانات وحالات القبول والأدلة المطلوبة. |
+
+## 5. ملخص السجل
+
+| النوع | العدد |
+|---|---:|
+| Epic | 24 |
+| Feature | 152 |
+| Configuration Item | 14 |
+| Integration Item | 8 |
+| Data / Migration Item | 3 |
+| Technical Enabler | 9 |
+| AI Use Case | 4 |
+| **الإجمالي** | **214** |
+
+| الأولوية | العدد |
+|---|---:|
+| Must | 202 |
+| Should | 12 |
+
+جميع العناصر الحالية: `Readiness = Not Ready` و`Status = Not Started` و`Target Release / Sprint = TBD`.
+
+## 6. سجل الـEpics
+
+| ID | Epic | المتطلبات المرتبطة | الأولوية | الاعتماديات | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-001 | الاستراتيجية والمواءمة الاستراتيجية | BR-001–BR-004؛ SRS §6.1 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-008 | إدارة الطلبات والأفكار والفرص | BR-005–BR-008؛ SRS §6.2 | Must | DEP-001, DEP-002, DEP-007 | Not Ready | Not Started |
+| BI-016 | دراسات الجدوى والتقييم وترتيب الأولويات | BR-009–BR-014؛ SRS §6.3 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-025 | إدارة المحافظ | BR-015–BR-020؛ SRS §6.4 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-034 | إدارة البرامج | BR-021–BR-024؛ SRS §6.5 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-041 | تأسيس المشاريع وتصنيفها وحوكمتها | BR-025–BR-030؛ SRS §6.6 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-050 | النطاق والمتطلبات والمخرجات وWBS | BR-031–BR-034؛ SRS §6.7 | Must | DEP-001, DEP-002, DEP-007 | Not Ready | Not Started |
+| BI-058 | الجدول الزمني والمعالم والتبعيات | BR-035–BR-039؛ SRS §6.8 | Must | DEP-001, DEP-002, DEP-006 | Not Ready | Not Started |
+| BI-067 | إدارة العمل والمهام وAgile والنموذج الهجين | BR-040–BR-044؛ SRS §6.9 | Must | DEP-001, DEP-002, DEP-007 | Not Ready | Not Started |
+| BI-077 | الموارد والطاقة والمهارات وسجلات الوقت | BR-045–BR-050؛ SRS §6.10 | Must | DEP-001, DEP-003, DEP-005, DEP-010 | Not Ready | Not Started |
+| BI-087 | الميزانية والتكاليف والتوقع والقيمة المكتسبة | BR-051–BR-057؛ SRS §6.11 | Must | DEP-001, DEP-003, DEP-008 | Not Ready | Not Started |
+| BI-097 | المشتريات والعقود والموردون والاستلامات والمدفوعات | BR-058–BR-064؛ SRS §6.12 | Must | DEP-001, DEP-002, DEP-003, DEP-005 | Not Ready | Not Started |
+| BI-108 | المخرجات والجودة والمراجعة والقبول | BR-065–BR-069؛ SRS §6.13 | Must | DEP-001, DEP-002, DEP-005, DEP-007 | Not Ready | Not Started |
+| BI-117 | المخاطر والقضايا والافتراضات والقيود والتبعيات والإجراءات | BR-070–BR-076؛ SRS §6.14 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-127 | إدارة التغيير وضبط خطوط الأساس | BR-077–BR-081؛ SRS §6.15 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-135 | الاجتماعات واللجان والقرارات وأصحاب المصلحة والاتصالات | BR-082–BR-087؛ SRS §6.16 | Must | DEP-001, DEP-002, DEP-005, DEP-007 | Not Ready | Not Started |
+| BI-144 | الوثائق والسجلات والقوالب والبحث والمعرفة | BR-088–BR-093؛ SRS §6.17 | Must | DEP-001, DEP-003, DEP-005, DEP-007 | Not Ready | Not Started |
+| BI-153 | تقارير الحالة ولوحات المعلومات والتحليلات والتنبيهات | BR-094–BR-100؛ SRS §6.18 | Must | DEP-001, DEP-006, DEP-007, DEP-008 | Not Ready | Not Started |
+| BI-164 | المنافع والنتائج والقيمة والتقييم اللاحق | BR-101–BR-105؛ SRS §6.19 | Must | DEP-001, DEP-002, DEP-008 | Not Ready | Not Started |
+| BI-172 | الإغلاق والانتقال إلى التشغيل | BR-106–BR-110؛ SRS §6.20 | Must | DEP-001, DEP-002, DEP-003, DEP-005 | Not Ready | Not Started |
+| BI-180 | الأدوار والصلاحيات والتفويض وفصل المهام والتدقيق | BR-111–BR-116؛ SRS §6.21 | Must | DEP-001, DEP-002, DEP-005, DEP-010 | Not Ready | Not Started |
+| BI-190 | البيانات والتكاملات والتهيئة وإدارة النظام | BR-117–BR-123؛ SRS §6.22 | Must | DEP-003, DEP-004, DEP-005, DEP-006, DEP-009 | Not Ready | Not Started |
+| BI-201 | تجربة المستخدم واللغة وإمكانية الوصول والتعاون | BR-124–BR-128؛ SRS §6.23 | Must | DEP-004, DEP-005, DEP-006, DEP-007 | Not Ready | Not Started |
+| BI-209 | القدرات الذكية المحكومة | BR-129–BR-132؛ SRS §6.24 | Must | DEP-004, DEP-005, DEP-011 | Not Ready | Not Started |
+
+## 7. سجل عناصر التسليم التفصيلي
+
+### 7.1 الاستراتيجية والمواءمة الاستراتيجية
+
+**Epic:** `BI-001` — **المصدر:** `BR-001–BR-004` و`SRS §6.1`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-002 | Feature | إدارة هيكل الاستراتيجية والمحاور والأهداف والمبادرات | Must | ACP-001 | Not Ready | Not Started |
+| BI-003 | Feature | إدارة الإصدارات وفترات السريان للعناصر الاستراتيجية | Must | ACP-002 | Not Ready | Not Started |
+| BI-004 | Feature | ربط الطلبات والبرامج والمشاريع بالأهداف الاستراتيجية | Must | ACP-001 | Not Ready | Not Started |
+| BI-005 | Feature | إدارة أوزان وأنواع المساهمة الاستراتيجية | Must | ACP-004 | Not Ready | Not Started |
+| BI-006 | Feature | قياس مساهمة المشاريع في المؤشرات والنتائج | Must | ACP-004 | Not Ready | Not Started |
+| BI-007 | Feature | تحليل أثر تغييرات الاستراتيجية وتقارير عدم المواءمة | Must | ACP-008 | Not Ready | Not Started |
+
+### 7.2 إدارة الطلبات والأفكار والفرص
+
+**Epic:** `BI-008` — **المصدر:** `BR-005–BR-008` و`SRS §6.2`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-009 | Feature | نقطة دخول موحدة للطلبات والأفكار والفرص والاحتياجات الإلزامية | Must | ACP-001 | Not Ready | Not Started |
+| BI-010 | Configuration Item | نماذج طلبات ديناميكية حسب النوع | Must | ACP-006 | Not Ready | Not Started |
+| BI-011 | Feature | حفظ المسودات والتحقق من الاكتمال قبل الإرسال | Must | ACP-001 | Not Ready | Not Started |
+| BI-012 | Feature | الترقيم المرجعي والتصنيف والتوجيه | Must | ACP-001 | Not Ready | Not Started |
+| BI-013 | Feature | كشف الطلبات المتكررة أو المتشابهة | Must | ACP-001 | Not Ready | Not Started |
+| BI-014 | Feature | دمج الطلبات مع حفظ المصادر والتاريخ | Must | ACP-002 | Not Ready | Not Started |
+| BI-015 | Feature | متابعة الحالة والإعادة والاستكمال والرفض والإغلاق | Must | ACP-002 | Not Ready | Not Started |
+
+### 7.3 دراسات الجدوى والتقييم وترتيب الأولويات
+
+**Epic:** `BI-016` — **المصدر:** `BR-009–BR-014` و`SRS §6.3`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-017 | Feature | إنشاء وإدارة دراسة حالة الأعمال | Must | ACP-001 | Not Ready | Not Started |
+| BI-018 | Feature | إدارة البدائل والمقارنة والتوصية | Must | ACP-004 | Not Ready | Not Started |
+| BI-019 | Feature | التقييمات التخصصية متعددة الجهات | Must | ACP-003 | Not Ready | Not Started |
+| BI-020 | Configuration Item | نماذج تقييم قابلة للتهيئة حسب التصنيف | Must | ACP-006 | Not Ready | Not Started |
+| BI-021 | Configuration Item | إدارة المعايير والأوزان والدرجات والتطبيع | Must | ACP-006 | Not Ready | Not Started |
+| BI-022 | Feature | إدارة تضارب المصالح والتنحي وإعادة التعيين | Must | ACP-003 | Not Ready | Not Started |
+| BI-023 | Feature | ترتيب المرشحين وبناء سيناريوهات الأولوية | Must | ACP-004 | Not Ready | Not Started |
+| BI-024 | Feature | دورات القرار وإعادة التقييم وحفظ التاريخ | Must | ACP-003 | Not Ready | Not Started |
+
+### 7.4 إدارة المحافظ
+
+**Epic:** `BI-025` — **المصدر:** `BR-015–BR-020` و`SRS §6.4`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-026 | Feature | إنشاء المحافظ وتحديد المالك والفترة والأهداف | Must | ACP-001 | Not Ready | Not Started |
+| BI-027 | Feature | تكوين المحفظة وإضافة ونقل وإزالة المكونات | Must | ACP-002 | Not Ready | Not Started |
+| BI-028 | Configuration Item | إدارة القيود والسقوف والمستهدفات | Must | ACP-006 | Not Ready | Not Started |
+| BI-029 | Feature | تحليل التوازن بين القيمة والتكلفة والمخاطر والقدرة | Must | ACP-004 | Not Ready | Not Started |
+| BI-030 | Feature | بناء ومقارنة سيناريوهات المحفظة | Must | ACP-004 | Not Ready | Not Started |
+| BI-031 | Feature | تجميع أداء المشاريع والبرامج مع منع الازدواج | Must | ACP-004 | Not Ready | Not Started |
+| BI-032 | Feature | إدارة مراجعات المحفظة والقرارات والإجراءات | Must | ACP-003 | Not Ready | Not Started |
+| BI-033 | Feature | لوحة صحة المحفظة والتدخلات المطلوبة | Must | ACP-008 | Not Ready | Not Started |
+
+### 7.5 إدارة البرامج
+
+**Epic:** `BI-034` — **المصدر:** `BR-021–BR-024` و`SRS §6.5`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-035 | Feature | إنشاء البرنامج وهيكله ومكوناته | Must | ACP-001 | Not Ready | Not Started |
+| BI-036 | Feature | إدارة خارطة الطريق والنتائج المشتركة | Must | ACP-001 | Not Ready | Not Started |
+| BI-037 | Feature | إدارة التبعيات والمخاطر والموارد المشتركة | Must | ACP-001 | Not Ready | Not Started |
+| BI-038 | Feature | تجميع أداء مكونات البرنامج | Must | ACP-004 | Not Ready | Not Started |
+| BI-039 | Feature | إدارة حوكمة البرنامج وقراراته | Must | ACP-003 | Not Ready | Not Started |
+| BI-040 | Feature | تحليل أثر التغييرات على مكونات البرنامج ومنافعه | Must | ACP-004 | Not Ready | Not Started |
+
+### 7.6 تأسيس المشاريع وتصنيفها وحوكمتها
+
+**Epic:** `BI-041` — **المصدر:** `BR-025–BR-030` و`SRS §6.6`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-042 | Feature | إنشاء السجل المؤسسي للمشروع والترقيم الفريد | Must | ACP-001 | Not Ready | Not Started |
+| BI-043 | Configuration Item | تصنيف المشاريع حسب النوع والقيمة والتعقيد والمخاطر | Must | ACP-006 | Not Ready | Not Started |
+| BI-044 | Feature | إدارة ميثاق المشروع وأهدافه ونطاقه ومعايير نجاحه | Must | ACP-001 | Not Ready | Not Started |
+| BI-045 | Feature | تعيين الراعي والمالك والمدير والفريق والجهات المشاركة | Must | ACP-001 | Not Ready | Not Started |
+| BI-046 | Configuration Item | تطبيق قوالب دورة الحياة حسب التصنيف | Must | ACP-006 | Not Ready | Not Started |
+| BI-047 | Feature | إدارة بوابات الحوكمة والأدلة والمراجعات | Must | ACP-003 | Not Ready | Not Started |
+| BI-048 | Feature | إدارة الاعتماد المشروط والاستثناء والإعادة والرفض | Must | ACP-003 | Not Ready | Not Started |
+| BI-049 | Feature | فصل حالة المشروع وصحته وحالة الحوكمة والتسليم | Must | ACP-002 | Not Ready | Not Started |
+
+### 7.7 النطاق والمتطلبات والمخرجات وWBS
+
+**Epic:** `BI-050` — **المصدر:** `BR-031–BR-034` و`SRS §6.7`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-051 | Feature | إدارة حدود النطاق داخل وخارج المشروع | Must | ACP-001 | Not Ready | Not Started |
+| BI-052 | Feature | إدارة متطلبات المشروع وإصداراتها | Must | ACP-002 | Not Ready | Not Started |
+| BI-053 | Feature | إنشاء هيكل تجزئة العمل وحزم العمل | Must | ACP-001 | Not Ready | Not Started |
+| BI-054 | Feature | ربط WBS بالمخرجات والأنشطة والملاك | Must | ACP-001 | Not Ready | Not Started |
+| BI-055 | Feature | إدارة معايير قبول المخرجات والمتطلبات | Must | ACP-003 | Not Ready | Not Started |
+| BI-056 | Feature | إدارة خطوط أساس النطاق وإصداراتها | Must | ACP-002 | Not Ready | Not Started |
+| BI-057 | Feature | تتبع المتطلبات إلى العمل والاختبار والقبول والتغيير | Must | ACP-001 | Not Ready | Not Started |
+
+### 7.8 الجدول الزمني والمعالم والتبعيات
+
+**Epic:** `BI-058` — **المصدر:** `BR-035–BR-039` و`SRS §6.8`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-059 | Feature | بناء الجدول المتكامل للمراحل والأنشطة والمعالم | Must | ACP-001 | Not Ready | Not Started |
+| BI-060 | Feature | إدارة علاقات الاعتمادية والتقديم والتأخير | Must | ACP-001 | Not Ready | Not Started |
+| BI-061 | Configuration Item | إدارة تقاويم العمل والعطل والقيود | Must | ACP-006 | Not Ready | Not Started |
+| BI-062 | Feature | اعتماد وحفظ خط الأساس الزمني | Must | ACP-003 | Not Ready | Not Started |
+| BI-063 | Feature | إدارة الفعلي والعمل المتبقي والتوقع | Must | ACP-004 | Not Ready | Not Started |
+| BI-064 | Feature | احتساب المسار الحرج والهامش والأنشطة القريبة من الحرج | Must | ACP-004 | Not Ready | Not Started |
+| BI-065 | Feature | إدارة التبعيات بين المشاريع والبرامج وتصعيدها | Must | ACP-002 | Not Ready | Not Started |
+| BI-066 | Feature | تحليل الانحرافات ومنع تعديل الالتزامات خارج التغيير | Must | ACP-004 | Not Ready | Not Started |
+
+### 7.9 إدارة العمل والمهام وAgile والنموذج الهجين
+
+**Epic:** `BI-067` — **المصدر:** `BR-040–BR-044` و`SRS §6.9`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-068 | Feature | إدارة المهام والمهام الفرعية ومعايير الإكمال | Must | ACP-001 | Not Ready | Not Started |
+| BI-069 | Feature | إدارة قوائم التحقق والمرفقات والتعليقات والأدلة | Must | ACP-001 | Not Ready | Not Started |
+| BI-070 | Feature | العروض الموحدة للقائمة واللوحة والتقويم والخط الزمني | Should | ACP-001 | Not Ready | Not Started |
+| BI-071 | Feature | إدارة Product Backlog والتراتبية بين Epic وFeature وStory | Must | ACP-001 | Not Ready | Not Started |
+| BI-072 | Feature | تخطيط وإدارة Sprint أو Iteration | Must | ACP-002 | Not Ready | Not Started |
+| BI-073 | Feature | لوحات التدفق وحدود العمل الجاري | Must | ACP-001 | Not Ready | Not Started |
+| BI-074 | Feature | مراجعات السبرنت والاسترجاع والإجراءات | Should | ACP-003 | Not Ready | Not Started |
+| BI-075 | Feature | مؤشرات Agile مثل Velocity وBurndown وThroughput | Should | ACP-008 | Not Ready | Not Started |
+| BI-076 | Feature | ربط العمل التكيفي بالمعالم والمخرجات والميزانية والمخاطر | Must | ACP-001 | Not Ready | Not Started |
+
+### 7.10 الموارد والطاقة والمهارات وسجلات الوقت
+
+**Epic:** `BI-077` — **المصدر:** `BR-045–BR-050` و`SRS §6.10`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-078 | Feature | تخطيط الطلب على الموارد حسب الدور والمهارة والفترة | Must | ACP-001 | Not Ready | Not Started |
+| BI-079 | Feature | التخطيط بموارد مسماة أو عامة | Must | ACP-001 | Not Ready | Not Started |
+| BI-080 | Feature | تعيين الموارد واستبدالها وتحريرها وتفويضها | Must | ACP-002 | Not Ready | Not Started |
+| BI-081 | Feature | تحليل التوافر والتخصيص والاستخدام والتعارض | Must | ACP-004 | Not Ready | Not Started |
+| BI-082 | Feature | طلبات الموارد ومراجعتها واعتمادها | Must | ACP-003 | Not Ready | Not Started |
+| BI-083 | Feature | البحث عن الموارد حسب المهارة والتوفر مع الخصوصية | Should | ACP-001 | Not Ready | Not Started |
+| BI-084 | Feature | إدارة سجلات الوقت والتقديم والمراجعة والقفل | Should | ACP-002 | Not Ready | Not Started |
+| BI-085 | Feature | تصحيح سجلات الوقت مع حفظ الأثر | Should | ACP-002 | Not Ready | Not Started |
+| BI-086 | Feature | لوحات الطاقة والاستغلال والتوقعات المستقبلية | Must | ACP-008 | Not Ready | Not Started |
+
+### 7.11 الميزانية والتكاليف والتوقع والقيمة المكتسبة
+
+**Epic:** `BI-087` — **المصدر:** `BR-051–BR-057` و`SRS §6.11`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-088 | Feature | إدارة سياق ميزانية المشروع والبرنامج والمحفظة | Must | ACP-001 | Not Ready | Not Started |
+| BI-089 | Configuration Item | إدارة فئات التكلفة ومصادر التمويل والأبعاد المالية | Must | ACP-006 | Not Ready | Not Started |
+| BI-090 | Feature | عرض الميزانية الأصلية والحالية والمخططة والالتزامات والفعلية | Must | ACP-008 | Not Ready | Not Started |
+| BI-091 | Feature | إدارة التوقع وETC وEAC والتدفق النقدي | Must | ACP-004 | Not Ready | Not Started |
+| BI-092 | Feature | إدارة المناقلات والمراجعات مع فصل الميزانية عن التوقع | Must | ACP-003 | Not Ready | Not Started |
+| BI-093 | Feature | تحليل الانحرافات والعتبات المالية | Must | ACP-004 | Not Ready | Not Started |
+| BI-094 | Feature | تطبيق القيمة المكتسبة للمشاريع المؤهلة | Should | ACP-004 | Not Ready | Not Started |
+| BI-095 | Feature | منع الازدواج في التجميع المالي للمحافظ والبرامج | Must | ACP-004 | Not Ready | Not Started |
+| BI-096 | Feature | إظهار مصدر وتاريخ حداثة البيانات المالية | Must | ACP-008 | Not Ready | Not Started |
+
+### 7.12 المشتريات والعقود والموردون والاستلامات والمدفوعات
+
+**Epic:** `BI-097` — **المصدر:** `BR-058–BR-064` و`SRS §6.12`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-098 | Feature | خطة المشتريات ومعالمها واعتمادياتها | Must | ACP-001 | Not Ready | Not Started |
+| BI-099 | Integration Item | ربط المشروع بطلبات الشراء والمنافسات والتقييمات والترسية | Must | ACP-005 | Not Ready | Not Started |
+| BI-100 | Integration Item | ربط المشروع بالعقود وأوامر الشراء | Must | ACP-005 | Not Ready | Not Started |
+| BI-101 | Feature | عرض التزامات العقد والمخرجات والمعالم والقيم والتواريخ | Must | ACP-001 | Not Ready | Not Started |
+| BI-102 | Feature | إدارة الضمانات والمطالبات والغرامات والتمديدات | Must | ACP-001 | Not Ready | Not Started |
+| BI-103 | Feature | إدارة تغييرات العقود وتحليل أثرها على المشروع | Must | ACP-003 | Not Ready | Not Started |
+| BI-104 | Feature | تقييم أداء المورد عبر معايير متعددة | Must | ACP-004 | Not Ready | Not Started |
+| BI-105 | Integration Item | ربط الاستلام وشهادة الإنجاز بالمخرج المقبول | Must | ACP-005 | Not Ready | Not Started |
+| BI-106 | Integration Item | عرض الفواتير والمدفوعات والاحتجازات المرتبطة | Must | ACP-005 | Not Ready | Not Started |
+| BI-107 | Feature | التحقق من الإغلاق التعاقدي والالتزامات المفتوحة | Must | ACP-003 | Not Ready | Not Started |
+
+### 7.13 المخرجات والجودة والمراجعة والقبول
+
+**Epic:** `BI-108` — **المصدر:** `BR-065–BR-069` و`SRS §6.13`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-109 | Feature | سجل المخرجات والملاك والمواعيد ومعايير القبول | Must | ACP-001 | Not Ready | Not Started |
+| BI-110 | Feature | إدارة إصدارات المخرجات والتقديم وإعادة التقديم | Must | ACP-002 | Not Ready | Not Started |
+| BI-111 | Feature | فحص اكتمال المخرج قبل المراجعة | Must | ACP-001 | Not Ready | Not Started |
+| BI-112 | Feature | دورات المراجعة والتعليقات والردود | Must | ACP-003 | Not Ready | Not Started |
+| BI-113 | Feature | القبول والرفض والقبول المشروط | Must | ACP-003 | Not Ready | Not Started |
+| BI-114 | Feature | خطة الجودة والمعايير ونقاط المراجعة | Must | ACP-001 | Not Ready | Not Started |
+| BI-115 | Feature | عدم المطابقة والإجراءات التصحيحية وإعادة الاختبار | Must | ACP-002 | Not Ready | Not Started |
+| BI-116 | Feature | فصل إكمال العمل عن القبول التجاري أو التشغيلي | Must | ACP-002 | Not Ready | Not Started |
+
+### 7.14 المخاطر والقضايا والافتراضات والقيود والتبعيات والإجراءات
+
+**Epic:** `BI-117` — **المصدر:** `BR-070–BR-076` و`SRS §6.14`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-118 | Feature | السجل الموحد لعناصر RAID والإجراءات | Must | ACP-001 | Not Ready | Not Started |
+| BI-119 | Feature | تقييم المخاطر والاحتمالية والأثر والتعرض | Must | ACP-004 | Not Ready | Not Started |
+| BI-120 | Feature | خطط الاستجابة والضوابط والتعرض المتبقي | Must | ACP-001 | Not Ready | Not Started |
+| BI-121 | Feature | إدارة القضايا والاحتواء والحل والتحقق | Must | ACP-002 | Not Ready | Not Started |
+| BI-122 | Feature | إدارة الافتراضات والقيود وتحويل حالتها | Must | ACP-002 | Not Ready | Not Started |
+| BI-123 | Feature | إدارة التبعيات وملاك التقديم والاستلام | Must | ACP-001 | Not Ready | Not Started |
+| BI-124 | Feature | إدارة الإجراءات والمواعيد والتصعيد والإغلاق | Must | ACP-002 | Not Ready | Not Started |
+| BI-125 | Configuration Item | قواعد العتبات والتصعيد حسب سياق الحوكمة | Must | ACP-006 | Not Ready | Not Started |
+| BI-126 | Feature | تحليل المخاطر والقضايا المترابطة والمتكررة مؤسسيًا | Should | ACP-008 | Not Ready | Not Started |
+
+### 7.15 إدارة التغيير وضبط خطوط الأساس
+
+**Epic:** `BI-127` — **المصدر:** `BR-077–BR-081` و`SRS §6.15`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-128 | Feature | تسجيل طلبات التغيير وتصنيفها | Must | ACP-001 | Not Ready | Not Started |
+| BI-129 | Feature | فحص اكتمال طلب التغيير | Must | ACP-001 | Not Ready | Not Started |
+| BI-130 | Feature | تحليل الأثر متعدد الأبعاد | Must | ACP-004 | Not Ready | Not Started |
+| BI-131 | Feature | إدارة قرار التغيير وشروطه ومبرراته | Must | ACP-003 | Not Ready | Not Started |
+| BI-132 | Feature | تطبيق التغيير على الخطط والمتطلبات والعقود والمخاطر | Must | ACP-002 | Not Ready | Not Started |
+| BI-133 | Feature | إنشاء خطوط أساس جديدة وحفظ المستبدلة | Must | ACP-002 | Not Ready | Not Started |
+| BI-134 | Feature | متابعة تنفيذ التغيير والتحقق من اكتماله | Must | ACP-002 | Not Ready | Not Started |
+
+### 7.16 الاجتماعات واللجان والقرارات وأصحاب المصلحة والاتصالات
+
+**Epic:** `BI-135` — **المصدر:** `BR-082–BR-087` و`SRS §6.16`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-136 | Feature | جدولة الاجتماعات واللجان وجدول الأعمال | Must | ACP-001 | Not Ready | Not Started |
+| BI-137 | Feature | إدارة الحضور والمواد والمحاضر | Must | ACP-001 | Not Ready | Not Started |
+| BI-138 | Feature | سجل القرارات والبدائل والمبررات والسلطة | Must | ACP-003 | Not Ready | Not Started |
+| BI-139 | Feature | تحويل القرارات والمحاضر إلى إجراءات قابلة للمتابعة | Must | ACP-002 | Not Ready | Not Started |
+| BI-140 | Feature | سجل أصحاب المصلحة وتحليل التأثير والاهتمام | Must | ACP-001 | Not Ready | Not Started |
+| BI-141 | Feature | خطط المشاركة والاتصال والجمهور والقنوات | Must | ACP-001 | Not Ready | Not Started |
+| BI-142 | Feature | تسجيل التغذية الراجعة والمخاوف والاستجابات | Must | ACP-001 | Not Ready | Not Started |
+| BI-143 | Feature | تقييد الاجتماعات والقرارات الحساسة حسب التصنيف | Must | ACP-010 | Not Ready | Not Started |
+
+### 7.17 الوثائق والسجلات والقوالب والبحث والمعرفة
+
+**Epic:** `BI-144` — **المصدر:** `BR-088–BR-093` و`SRS §6.17`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-145 | Configuration Item | هيكل وثائق وسجلات حسب نوع المشروع ودورة الحياة | Must | ACP-006 | Not Ready | Not Started |
+| BI-146 | Feature | إدارة بيانات الوثيقة والمالك والتصنيف والحالة | Must | ACP-001 | Not Ready | Not Started |
+| BI-147 | Feature | إدارة الإصدارات والمراجعة والاعتماد | Must | ACP-003 | Not Ready | Not Started |
+| BI-148 | Integration Item | الربط بالمستودع الرسمي وموقع السجل المعتمد | Must | ACP-005 | Not Ready | Not Started |
+| BI-149 | Configuration Item | إدارة القوالب والإصدارات وفترات السريان | Must | ACP-006 | Not Ready | Not Started |
+| BI-150 | Feature | البحث الهيكلي والنصي ضمن الصلاحيات | Must | ACP-001 | Not Ready | Not Started |
+| BI-151 | Feature | التقاط الدروس المستفادة أثناء التنفيذ والإغلاق | Must | ACP-001 | Not Ready | Not Started |
+| BI-152 | Feature | تصنيف المعرفة ومراجعتها وإعادة استخدامها | Must | ACP-001 | Not Ready | Not Started |
+
+### 7.18 تقارير الحالة ولوحات المعلومات والتحليلات والتنبيهات
+
+**Epic:** `BI-153` — **المصدر:** `BR-094–BR-100` و`SRS §6.18`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-154 | Feature | إنشاء تقرير الحالة الدوري والمبني على الحدث | Must | ACP-001 | Not Ready | Not Started |
+| BI-155 | Feature | فصل الحقائق النظامية عن التقييم والسرد والتوقع | Must | ACP-001 | Not Ready | Not Started |
+| BI-156 | Feature | مراجعة واعتماد ونشر وتصحيح تقارير الحالة | Must | ACP-003 | Not Ready | Not Started |
+| BI-157 | Configuration Item | قواعد صحة المشروع والمؤشرات القابلة للتفسير | Must | ACP-006 | Not Ready | Not Started |
+| BI-158 | Feature | لوحة الإدارة العليا والمحفظة والبرنامج والمشروع | Must | ACP-008 | Not Ready | Not Started |
+| BI-159 | Feature | التصفية والمقارنة والتجميع والتحليل Drill-down | Must | ACP-008 | Not Ready | Not Started |
+| BI-160 | Feature | حفظ وتصدير وجدولة التقارير المصرح بها | Must | ACP-008 | Not Ready | Not Started |
+| BI-161 | Feature | محرك التنبيهات والتذكيرات والتصعيد | Must | ACP-009 | Not Ready | Not Started |
+| BI-162 | Feature | تفضيلات الإشعار والإقرار والكتم ومنع التكرار | Must | ACP-009 | Not Ready | Not Started |
+| BI-163 | Feature | إظهار جودة البيانات وحداثتها ومصدرها في التقارير | Must | ACP-008 | Not Ready | Not Started |
+
+### 7.19 المنافع والنتائج والقيمة والتقييم اللاحق
+
+**Epic:** `BI-164` — **المصدر:** `BR-101–BR-105` و`SRS §6.19`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-165 | Feature | تعريف المخرجات والنتائج والمنافع والمضار والقيمة | Must | ACP-001 | Not Ready | Not Started |
+| BI-166 | Feature | إدارة خطوط الأساس والمستهدفات وملاك المنافع | Must | ACP-001 | Not Ready | Not Started |
+| BI-167 | Feature | جداول القياس بعد المشروع ومصادر الأدلة | Must | ACP-001 | Not Ready | Not Started |
+| BI-168 | Feature | إدارة حالات المنفعة والتوقع والفعلية | Must | ACP-002 | Not Ready | Not Started |
+| BI-169 | Feature | التنبيه للمنافع المتأخرة أو المعرضة للخطر | Must | ACP-009 | Not Ready | Not Started |
+| BI-170 | Feature | التقييم اللاحق للمشروع أو البرنامج | Must | ACP-003 | Not Ready | Not Started |
+| BI-171 | Feature | تحليل القيمة المتحققة واستخدامها في الأولويات | Must | ACP-008 | Not Ready | Not Started |
+
+### 7.20 الإغلاق والانتقال إلى التشغيل
+
+**Epic:** `BI-172` — **المصدر:** `BR-106–BR-110` و`SRS §6.20`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-173 | Feature | قائمة تحقق الإغلاق متعددة الأبعاد | Must | ACP-001 | Not Ready | Not Started |
+| BI-174 | Feature | التحقق من الالتزامات المالية والتعاقدية المفتوحة | Must | ACP-003 | Not Ready | Not Started |
+| BI-175 | Feature | خطة الانتقال والتسليم للمالك التشغيلي | Must | ACP-001 | Not Ready | Not Started |
+| BI-176 | Feature | التدريب والدعم والوصول والمراقبة واستمرارية الخدمة | Must | ACP-001 | Not Ready | Not Started |
+| BI-177 | Feature | إغلاق المشروع أو إلغاؤه أو إنهاؤه أو دمجه | Must | ACP-003 | Not Ready | Not Started |
+| BI-178 | Feature | إعادة الفتح أو التصحيح المحكوم بعد الإغلاق | Must | ACP-002 | Not Ready | Not Started |
+| BI-179 | Feature | حفظ سجل الإغلاق ونقل المنافع والعناصر المفتوحة | Must | ACP-002 | Not Ready | Not Started |
+
+### 7.21 الأدوار والصلاحيات والتفويض وفصل المهام والتدقيق
+
+**Epic:** `BI-180` — **المصدر:** `BR-111–BR-116` و`SRS §6.21`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-181 | Configuration Item | إدارة الأدوار الوظيفية ونطاقاتها | Must | ACP-006 | Not Ready | Not Started |
+| BI-182 | Feature | الصلاحيات على مستوى المحفظة والبرنامج والمشروع والسجل | Must | ACP-010 | Not Ready | Not Started |
+| BI-183 | Feature | قواعد الوصول حسب التصنيف والجهة والسرية | Must | ACP-010 | Not Ready | Not Started |
+| BI-184 | Feature | التفويض المؤقت والإنابة وفترات السريان | Must | ACP-010 | Not Ready | Not Started |
+| BI-185 | Feature | فصل المهام ومنع التعارضات | Must | ACP-010 | Not Ready | Not Started |
+| BI-186 | Feature | وصول الموردين والاستشاريين المقيد | Must | ACP-010 | Not Ready | Not Started |
+| BI-187 | Integration Item | إدارة دورة حياة المستخدم والوصول عند النقل أو الإنهاء | Must | ACP-005 | Not Ready | Not Started |
+| BI-188 | Technical Enabler | سجل التدقيق للإنشاء والتعديل والقرار والتصدير | Must | ACP-010 | Not Ready | Not Started |
+| BI-189 | Feature | تقارير مراجعة الصلاحيات والأحداث الحساسة | Must | ACP-008 | Not Ready | Not Started |
+
+### 7.22 البيانات والتكاملات والتهيئة وإدارة النظام
+
+**Epic:** `BI-190` — **المصدر:** `BR-117–BR-123` و`SRS §6.22`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-191 | Data / Migration Item | كتالوج كيانات البيانات وملاكها ومصادر الحقيقة | Must | ACP-007 | Not Ready | Not Started |
+| BI-192 | Configuration Item | إدارة القيم المرجعية والتصنيفات وفترات السريان | Must | ACP-006 | Not Ready | Not Started |
+| BI-193 | Technical Enabler | محرك سير العمل والنماذج والقواعد القابلة للتهيئة | Must | ACP-010 | Not Ready | Not Started |
+| BI-194 | Technical Enabler | إطار التكامل والواجهات وتوثيق العقود | Must | ACP-010 | Not Ready | Not Started |
+| BI-195 | Integration Item | المزامنة والجدولة وإعادة المحاولة ومعالجة الأخطاء | Must | ACP-005 | Not Ready | Not Started |
+| BI-196 | Integration Item | المطابقة والتسوية وإظهار حداثة البيانات | Must | ACP-005 | Not Ready | Not Started |
+| BI-197 | Data / Migration Item | استيراد وتصدير البيانات المحكوم | Must | ACP-007 | Not Ready | Not Started |
+| BI-198 | Data / Migration Item | ترحيل البيانات التاريخية والتحقق من الجودة | Must | ACP-007 | Not Ready | Not Started |
+| BI-199 | Technical Enabler | إدارة البيئات والإعدادات مع فصلها عن بيانات الأعمال | Must | ACP-010 | Not Ready | Not Started |
+| BI-200 | Technical Enabler | مراقبة التكاملات والوظائف المجدولة والتنبيهات التشغيلية | Must | ACP-010 | Not Ready | Not Started |
+
+### 7.23 تجربة المستخدم واللغة وإمكانية الوصول والتعاون
+
+**Epic:** `BI-201` — **المصدر:** `BR-124–BR-128` و`SRS §6.23`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-202 | Feature | واجهات عربية وإنجليزية وتحويل اللغة | Must | ACP-011 | Not Ready | Not Started |
+| BI-203 | Technical Enabler | دعم RTL وLTR للمحتوى والمكونات | Must | ACP-011 | Not Ready | Not Started |
+| BI-204 | Feature | تصميم متجاوب للأجهزة والمتصفحات المعتمدة | Must | ACP-011 | Not Ready | Not Started |
+| BI-205 | Technical Enabler | تطبيق معيار إمكانية الوصول المعتمد | Must | ACP-011 | Not Ready | Not Started |
+| BI-206 | Feature | مساحات عمل ودوريات شخصية حسب الدور | Must | ACP-001 | Not Ready | Not Started |
+| BI-207 | Feature | التعليقات والإشارات والمتابعة والاشتراك | Must | ACP-001 | Not Ready | Not Started |
+| BI-208 | Technical Enabler | معالجة التعديل المتزامن والتعارضات | Must | ACP-010 | Not Ready | Not Started |
+
+### 7.24 القدرات الذكية المحكومة
+
+**Epic:** `BI-209` — **المصدر:** `BR-129–BR-132` و`SRS §6.24`
+
+| ID | النوع | عنصر التسليم | الأولوية | ملف القبول | الجاهزية | الحالة |
+|---|---|---|---|---|---|---|
+| BI-210 | AI Use Case | البحث الدلالي في المعرفة والمشاريع ضمن الصلاحيات | Should | ACP-012 | Not Ready | Not Started |
+| BI-211 | AI Use Case | تلخيص حالة المشروع مع إظهار المصادر | Should | ACP-012 | Not Ready | Not Started |
+| BI-212 | AI Use Case | اقتراح المخاطر والتبعيات والإجراءات للمراجعة البشرية | Should | ACP-012 | Not Ready | Not Started |
+| BI-213 | AI Use Case | مساعد إعداد التقارير والمسودات دون اعتماد تلقائي | Should | ACP-012 | Not Ready | Not Started |
+| BI-214 | Technical Enabler | حوكمة النماذج والمدخلات والمخرجات والتقييم والتغذية الراجعة | Must | ACP-012 | Not Ready | Not Started |
+
+## 8. ملفات معايير القبول المشتركة
+
+تستخدم الملفات التالية لتحديد نمط القبول العام، ولا تستبدل معايير القبول التفصيلية الخاصة بكل عنصر.
+
+| الملف | النوع | Given | When | Then |
 |---|---|---|---|---|
-| BG-001 | {{GAP_OR_QUESTION}} | {{ITEM_IDS}} | {{OWNER}} | Open |
+| ACP-001 | إدارة سجل أو وظيفة أعمال | وجود مستخدم مخول ونطاق بيانات صالح | ينشئ أو يعرض أو يعدل المستخدم السجل | ينفذ النظام العملية وفق الصلاحية والتحقق ويحفظ التاريخ ويعرض النتيجة. |
+| ACP-002 | دورة الحياة والحالات | وجود سجل في حالة معلومة ومسار انتقال معتمد | يطلب المستخدم الانتقال إلى حالة أخرى | يتحقق النظام من الشروط والصلاحية ويحفظ السبب والمنفذ والتاريخ ولا يسمح بالانتقال غير المصرح. |
+| ACP-003 | المراجعة والاعتماد والقرار | اكتمال الأدلة وتعيين المراجع أو السلطة | يصدر المراجع قرارًا | يسجل النظام القرار والسبب والشروط والتاريخ والسلطة ويمنع تعديل القرار المعتمد مباشرة. |
+| ACP-004 | الاحتساب والتجميع | وجود بيانات مصدر صالحة ومنهجية احتساب معتمدة | يطلب المستخدم المؤشر أو التجميع | يحسب النظام النتيجة دون ازدواج ويتيح تتبع مكوناتها ويظهر حداثة البيانات. |
+| ACP-005 | التكامل | توافر عقد تكامل معتمد وسجلات اختبار | ترسل أو تستقبل البيانات | يتحقق النظام من العقد ويعالج التكرار والخطأ وإعادة المحاولة والمطابقة ويعرض حالة المزامنة. |
+| ACP-006 | التهيئة | وجود مسؤول مخول وتغيير تهيئة معتمد | يضيف المسؤول قيمة أو قاعدة أو نموذجًا | يحفظ النظام الإصدار والسريان ويمنع كسر السجلات التاريخية ويسجل التغيير. |
+| ACP-007 | البيانات والترحيل | وجود خريطة بيانات وقواعد جودة ومصدر ومالك | تستورد أو تحول البيانات | يتحقق النظام من الجودة ويرفض أو يعزل الخطأ ويصدر تقرير مطابقة ولا يستبدل بيانات صحيحة دون ضبط. |
+| ACP-008 | التقرير أو اللوحة | وجود مستخدم مخول وبيانات محدثة | يفتح المستخدم التقرير أو يطبق مرشحًا | يعرض النظام القيم القابلة للتفسير مع المصدر والحداثة وDrill-down المصرح والتصدير المحكوم. |
+| ACP-009 | الإشعار والتصعيد | حدوث حدث مطابق لقاعدة نشطة | يستحق الإشعار أو التصعيد | يرسل النظام الرسالة للمستلمين والقناة والتوقيت الصحيح، ويسجل الإرسال والإقرار ويمنع التكرار غير المطلوب. |
+| ACP-010 | الأمن والتدقيق والقدرات التقنية | وجود سياسات وضوابط معتمدة | تحدث عملية حساسة أو تشغيل تقني | يطبق النظام أقل صلاحية والتشفير والمراقبة والتدقيق والاسترداد دون كشف بيانات أو أسرار. |
+| ACP-011 | اللغة وإمكانية الوصول | توافر محتوى ومكونات معتمدة | يستخدم المستخدم العربية أو الإنجليزية أو تقنية مساعدة | يعرض النظام المحتوى بالاتجاه الصحيح ويتيح التنقل والإدخال والرسائل وفق معيار الوصول المعتمد. |
+| ACP-012 | القدرات الذكية | توافر حالة استخدام ونموذج وحوكمة ومصادر مصرح بها | يطلب المستخدم نتيجة ذكية | يعرض النظام النتيجة ومصادرها وحدودها، ويطلب المراجعة البشرية، ويسجل الملاحظات ولا ينفذ قرارًا حساسًا تلقائيًا. |
 
-## 7. Revision History
+## 9. معايير قبول تفصيلية أولية
 
-| Version | Date | Author | Change Summary |
+| AC ID | Backlog ID | Given | When | Then | المتطلبات المرتبطة |
+|---|---|---|---|---|---|
+| AC-001 | BI-001 | اكتمال المتطلبات والتصميم المعتمد للنطاق | تراجع العناصر التابعة | توجد تغطية متسقة للاستراتيجية والمواءمة دون فجوة مانعة | BR-001–BR-004؛ SRS §6.1 |
+| AC-002 | BI-008 | اكتمال نماذج الطلبات وقواعد التوجيه | يرسل مقدم الطلب طلبًا مكتملًا أو ناقصًا | يقبل النظام المكتمل ويرفض الإرسال الناقص برسائل واضحة ويحفظ المسار | BR-005–BR-008؛ SRS §6.2 |
+| AC-003 | BI-016 | اكتمال دراسة الحالة والتقييمات المطلوبة | تبدأ دورة التقييم والترتيب | تحتسب النتائج وفق النموذج وتحفظ الأدلة والقرارات والإصدارات | BR-009–BR-014؛ SRS §6.3 |
+| AC-004 | BI-025 | وجود محفظة ومكونات وبيانات أداء | يجري مدير المحفظة تحليلًا أو سيناريو | تظهر النتائج دون ازدواج ويمكن تتبعها إلى المشاريع والبرامج | BR-015–BR-020؛ SRS §6.4 |
+| AC-005 | BI-034 | وجود برنامج ومكونات مترابطة | تراجع حالة البرنامج | تجمع النتائج والمخاطر والتبعيات والمنافع مع الحفاظ على تفاصيل المكونات | BR-021–BR-024؛ SRS §6.5 |
+| AC-006 | BI-041 | اعتماد طلب إنشاء مشروع وتصنيفه | ينشأ المشروع وتطبق دورة حياته | ينشأ الرقم والميثاق والأدوار والبوابات وفق التصنيف وتحفظ القرارات | BR-025–BR-030؛ SRS §6.6 |
+| AC-007 | BI-050 | وجود نطاق ومتطلبات ومخرجات | ينشأ WBS أو خط أساس | تحفظ العلاقات والإصدارات ولا يعدل المعتمد دون تغيير محكوم | BR-031–BR-034؛ SRS §6.7 |
+| AC-008 | BI-058 | وجود جدول وعلاقات وتقاويم | يحدث التقدم أو التوقع | يعاد الاحتساب وتظهر الانحرافات والمسار الحرج والتبعيات المعرضة للخطر | BR-035–BR-039؛ SRS §6.8 |
+| AC-009 | BI-067 | وجود مهام أو Backlog ومنهجية تسليم | ينفذ الفريق العمل | تتحدث الحالات واللوحات والمؤشرات من مصدر موحد ويرتبط العمل بالحوكمة | BR-040–BR-044؛ SRS §6.9 |
+| AC-010 | BI-077 | وجود طلب موارد وتوافر وتخصيصات | يخطط المدير أو يعتمد موردًا | تظهر السعة والتعارضات وتحفظ التعيينات والخصوصية والتاريخ | BR-045–BR-050؛ SRS §6.10 |
+| AC-011 | BI-087 | وجود ميزانية وبيانات مالية وتوقع | يفتح المستخدم التحليل المالي | تظهر القيم منفصلة ومجمعة دون ازدواج مع المصدر والحداثة والانحراف | BR-051–BR-057؛ SRS §6.11 |
+| AC-012 | BI-097 | وجود روابط شراء وعقد ومورد | يحدث استلام أو فاتورة أو تغيير عقد | تظهر العلاقة بالمشروع والمخرج والالتزامات مع الحفاظ على مصدر الحقيقة | BR-058–BR-064؛ SRS §6.12 |
+| AC-013 | BI-108 | تقديم مخرج بإصدار ومعايير قبول | يراجعه المستخدم المخول | يسجل القرار والتعليقات والشروط والأدلة وتبقى حالة الإكمال منفصلة عن القبول | BR-065–BR-069؛ SRS §6.13 |
+| AC-014 | BI-117 | تسجيل خطر أو قضية أو تبعية | تتغير الحالة أو تتجاوز العتبة | تطبق قواعد التقييم والتصعيد ويحفظ المالك والاستجابة والأثر التاريخي | BR-070–BR-076؛ SRS §6.14 |
+| AC-015 | BI-127 | تقديم تغيير مكتمل | تنتهي تحليلات الأثر ويصدر القرار | يحفظ القرار وتحدث العناصر وخطوط الأساس المصرح بها دون محو التاريخ | BR-077–BR-081؛ SRS §6.15 |
+| AC-016 | BI-135 | انعقاد اجتماع أو لجنة | تعتمد المحاضر والقرارات | تنشأ الإجراءات وتطبق السرية وتبقى المسؤوليات والمواعيد قابلة للتتبع | BR-082–BR-087؛ SRS §6.16 |
+| AC-017 | BI-144 | وجود وثيقة أو سجل أو معرفة | يرفع أو يبحث المستخدم | تحفظ البيانات الوصفية والإصدارات والصلاحيات ويشار إلى الموقع الرسمي | BR-088–BR-093؛ SRS §6.17 |
+| AC-018 | BI-153 | حلول موعد تقرير أو وقوع حدث تنبيه | ينشأ التقرير أو التنبيه | تظهر المعلومات القابلة للتفسير ويطبق الاعتماد والتصعيد والتسجيل | BR-094–BR-100؛ SRS §6.18 |
+| AC-019 | BI-164 | وجود منفعة بخط أساس ومستهدف ومالك | يحل موعد القياس | تسجل القيمة والدليل والحالة والتوقع ويستمر الالتزام بعد إغلاق المشروع | BR-101–BR-105؛ SRS §6.19 |
+| AC-020 | BI-172 | طلب إغلاق أو انتقال | تنفذ قائمة التحقق | يمنع الإغلاق عند وجود مانع غير معالج، أو ينقل الالتزام باستثناء موثق | BR-106–BR-110؛ SRS §6.20 |
+| AC-021 | BI-180 | وجود مستخدم ودور ونطاق | يحاول المستخدم تنفيذ عملية | يسمح أو يمنع وفق أقل صلاحية وفصل المهام ويسجل الحدث الحساس | BR-111–BR-116؛ SRS §6.21 |
+| AC-022 | BI-190 | وجود عقد بيانات أو تهيئة أو عملية ترحيل | تنفذ المزامنة أو الاستيراد | تطبق الجودة والمطابقة وإعادة المحاولة والمراقبة وتظهر حالة المصدر | BR-117–BR-123؛ SRS §6.22 |
+| AC-023 | BI-201 | استخدام المنصة بالعربية أو الإنجليزية وعلى جهاز معتمد | يتنقل المستخدم وينفذ سيناريو | تعمل الاتجاهات والمكونات والاستجابة وإمكانية الوصول دون فقد وظيفة | BR-124–BR-128؛ SRS §6.23 |
+| AC-024 | BI-209 | طلب نتيجة ذكية ضمن صلاحية | يولد النظام النتيجة | تظهر المصادر والحدود والمراجعة البشرية ولا ينفذ قرارًا حساسًا تلقائيًا | BR-129–BR-132؛ SRS §6.24 |
+
+هذه المعايير أولية لتثبيت منهج القبول، ويجب تفصيلها إلى معايير وحالات قبول خاصة بكل عنصر قبل نقله إلى `Ready`.
+
+## 10. قواعد الأولوية والتخطيط
+
+- `Must`: قدرة لازمة للنظام المستهدف أو للحوكمة أو الأمن أو سلامة البيانات أو دورة الحياة الأساسية.
+- `Should`: قدرة مهمة يمكن جدولة تنفيذها بعد القدرات الأساسية دون حذفها من النطاق المستهدف.
+- لا تستخدم الأولوية وحدها لتحديد الإصدار؛ يجب مراعاة القيمة والمخاطر والاعتماديات والقدرة والتسلسل المعماري.
+- لا يخصص عنصر لإصدار أو Sprint قبل استيفاء Definition of Ready.
+- عند تقسيم عنصر تحفظ العلاقة بالأصل ولا يعاد استخدام معرفه.
+- عند إلغاء عنصر يوثق قرار النطاق والأثر على المتطلبات والتتبع، ولا يحذف تاريخيًا.
+
+## 11. فجوات وأسئلة السجل
+
+| ID | الفجوة / السؤال | العناصر المتأثرة | المالك | الحالة |
+|---|---|---|---|---|
+| BG-001 | مراجعة وتأكيد متطلبات الأعمال وSRS قبل اعتبار العناصر مستقرة. | BI-001–BI-214 | PMO وملاك الأعمال | Open |
+| BG-002 | تأكيد ملاك المنتج والنظام والوحدات والبيانات والقبول. | جميع العناصر | صندوق البيئة | Open |
+| BG-003 | تأكيد تصنيفات المشاريع والبوابات ومسارات الاعتماد والعتبات. | BI-041–BI-049 وما يرتبط بها | PMO والحوكمة | Open |
+| BG-004 | تأكيد أنظمة المصدر والعقود التكاملية والحقول والتواتر. | عناصر Integration وData | IT وملاك الأنظمة | Open |
+| BG-005 | اعتماد الأدوار ونطاق البيانات وفصل المهام والوصول الخارجي. | BI-180–BI-189 | الأمن وHR والأعمال | Open |
+| BG-006 | اعتماد مؤشرات الصحة والتقارير الرسمية ودورات النشر. | BI-153–BI-163 | PMO والإدارة العليا | Open |
+| BG-007 | اعتماد أهداف NFR مثل الأداء والتوافر والسعة وRPO وRTO. | جميع العناصر التقنية | IT والتشغيل والأمن | Open |
+| BG-008 | اعتماد بنية المعلومات والشاشات ونظام التصميم ومتطلبات الوصول. | العناصر ذات الواجهات | الأعمال وUI/UX | Open |
+| BG-009 | تحديد نطاق ترحيل البيانات وإيقاف الأدوات الحالية. | BI-191, BI-197, BI-198 | PMO والبيانات وIT | Open |
+| BG-010 | اعتماد حالات استخدام الذكاء الاصطناعي والحوكمة والتقييم. | BI-209–BI-214 | الأعمال وAI Governance والأمن | Open |
+| BG-011 | تطوير مصفوفة تتبع تفصيلية من BR إلى FR/NFR إلى BI. | BI-001–BI-214 | محلل النظام | Open |
+| BG-012 | إعداد التصميم واختبارات القبول قبل ترقية أي عنصر إلى Ready. | BI-001–BI-214 | الفريق المعني | Open |
+
+## 12. تقييم الجاهزية
+
+السجل شامل من ناحية القدرات المستهدفة ومترابط مع مجموعات متطلبات الأعمال وأقسام SRS، لكنه ليس جاهزًا للتنفيذ بعد للأسباب التالية:
+
+- متطلبات الأعمال وSRS ما زالتا في حالة Draft.
+- لم تعتمد مصفوفات الأدوار والصلاحيات والحوكمة والحدود والعتبات.
+- لم يعتمد نوع الحل أو المعمارية أو التكاملات أو نماذج البيانات.
+- لم تستكمل مواصفات الشاشات والتفاعلات ونظام التصميم.
+- لم تحدد القيم النهائية للمتطلبات غير الوظيفية.
+- لم تعد حالات الاختبار التفصيلية أو بيئاتها وبياناتها.
+- لم تنشأ مصفوفة التتبع التفصيلية التي تربط كل `BI` بمعرفات `FR` و`NFR`.
+
+## 13. الخطوة التالية
+
+بعد مراجعة هذا السجل، تعد `docs/01-Requirements/05-Traceability-Matrix.md` لربط الأهداف ومتطلبات الأعمال والقواعد و`FR/NFR` وعناصر السجل والتصميم والاختبارات. بعد ذلك يبدأ تصميم الحل، وليس التنفيذ.
+
+## 14. سجل المراجعات
+
+| الإصدار | التاريخ | المؤلف | ملخص التغيير |
 |---|---|---|---|
-| 0.1 | {{DATE}} | {{AUTHOR}} | Initial draft |
+| 0.1 | Template | Repository starter | قالب عام أولي |
+| 0.2 | 2026-07-18 | تحليل بمساعدة الذكاء الاصطناعي وتحت توجيه المستخدم | إنشاء سجل عربي شامل يضم 24 Epic و190 عنصر تسليم تفصيلي |
